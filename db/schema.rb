@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_24_033520) do
+ActiveRecord::Schema.define(version: 2018_08_24_043350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,12 +48,22 @@ ActiveRecord::Schema.define(version: 2018_08_24_033520) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "interventions", force: :cascade do |t|
+    t.text "description"
+    t.bigint "admission_id"
+    t.bigint "appointment_id"
+    t.bigint "staff_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "notes", force: :cascade do |t|
     t.text "details"
     t.bigint "staff_id"
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "parent_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -97,7 +107,7 @@ ActiveRecord::Schema.define(version: 2018_08_24_033520) do
     t.float "temperature"
     t.float "resp_rate"
     t.float "pulse"
-    t.bigint "admossion_id"
+    t.bigint "admission_id"
     t.bigint "staff_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

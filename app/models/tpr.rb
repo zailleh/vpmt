@@ -1,2 +1,16 @@
+# == Schema Information
+#
+# Table name: tprs
+#
+#  id           :bigint(8)        not null, primary key
+#  temperature  :float
+#  resp_rate    :float
+#  pulse        :float
+#  admission_id :bigint(8)
+#  staff_id     :bigint(8)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class Tpr < ApplicationRecord
 end

@@ -1,8 +1,21 @@
+# == Schema Information
+#
+# Table name: admissions
+#
+#  id             :bigint(8)        not null, primary key
+#  reason         :text
+#  staff_id       :bigint(8)
+#  patient_id     :bigint(8)
+#  appointment_id :bigint(8)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Admission, type: :model do
   describe 'validates' do
-    it { is_expected.to validates_presence_of :reason }
+    it { is_expected.to validate_presence_of :reason }
   end
 
   describe 'associations' do
@@ -11,7 +24,7 @@ RSpec.describe Admission, type: :model do
     it { is_expected.to have_many :tprs }
     it { is_expected.to have_many :interventions }
     it { is_expected.to have_many :schedules }
-    it { is_expected.to belong_to :appointment, :optional => true }
+    it { is_expected.to belong_to :appointment }
     it { is_expected.to have_many :notes }
   end
 end

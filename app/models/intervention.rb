@@ -11,5 +11,6 @@
 #  updated_at     :datetime         not null
 #
 
-class ScheduledIntervention < Intervention
+class Intervention < ApplicationRecord
+  belongs_to :admission
 end
