@@ -20,7 +20,7 @@ RSpec.describe Schedule, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to :staff }
     it { is_expected.to belong_to :admission }
-    it { is_expected.to have_many :interventions }
+    it { is_expected.to have_many :scheduled_interventions }
     it { is_expected.to have_many :notes }
   end
 end

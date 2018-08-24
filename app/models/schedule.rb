@@ -11,4 +11,10 @@
 #
 
 class Schedule < ApplicationRecord
+  validates_presence_of :start
+
+  belongs_to :staff
+  belongs_to :admission
+  has_many :scheduled_interventions
+  has_many :notes, :as => :takes_notes, :foreign_key => :parent_id
 end

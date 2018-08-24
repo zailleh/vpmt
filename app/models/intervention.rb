@@ -9,6 +9,8 @@
 #  staff_id       :bigint(8)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  schedule_id    :bigint(8)
+#  status         :string
 #
 
 class Intervention < ApplicationRecord

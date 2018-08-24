@@ -12,4 +12,8 @@
 #
 
 class Shift < ApplicationRecord
+  validates_presence_of :start, :end
+
+  belongs_to :staff
+  belongs_to :role
 end

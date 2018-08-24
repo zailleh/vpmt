@@ -13,4 +13,8 @@
 #
 
 class Tpr < ApplicationRecord
+  validates_presence_of :temperature, :resp_rate, :pulse
+
+  belongs_to :admission
+  belongs_to :staff
 end

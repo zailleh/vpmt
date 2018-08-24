@@ -47,6 +47,7 @@ group :test do
   gem 'rspec-rails'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
+  gem 'shoulda-callback-matchers'
   gem 'simplecov', require: false
 end
 

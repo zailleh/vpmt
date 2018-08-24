@@ -13,4 +13,10 @@
 #
 
 class Patient < ApplicationRecord
+  validates_presence_of :name, :date_of_birth, :breed, :animal_type
+
+  has_many :admissions
+  has_many :appointments
+  belongs_to :customer
+  has_many :notes, :as => :takes_notes, :foreign_key => :parent_id
 end

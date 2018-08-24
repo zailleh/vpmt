@@ -17,7 +17,7 @@ require 'rails_helper'
 RSpec.describe Patient, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of :name }
-    it { is_expected.to validate_presence_of :age }
+    it { is_expected.to validate_presence_of :date_of_birth }
     it { is_expected.to validate_presence_of :breed }
     it { is_expected.to validate_presence_of :animal_type }
   end
