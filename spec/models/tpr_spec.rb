@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Tpr, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to belong_to :admission }
+  it { is_expected.to belong_to :staff }
 end
