@@ -16,4 +16,9 @@
 #
 
 class Customer < ApplicationRecord
+  validates_presence_of :first_name, :last_name, :mobile, :email
+
+  has_many :patients
+  has_many :appointments
+  has_many :notes, :as => :takes_notes, :foreign_key => :parent_id
 end

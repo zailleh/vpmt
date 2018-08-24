@@ -30,10 +30,10 @@ RSpec.describe Customer, type: :model do
   end
 
   describe 'validations' do
-    it { is_expected.to validates_presence_of :first_name }
-    it { is_expected.to validates_presence_of :last_name }
-    it { is_expected.to validates_presence_of :mobile_name }
-    it { is_expected.to validates_presence_of :email_name }
+    it { is_expected.to validate_presence_of :first_name }
+    it { is_expected.to validate_presence_of :last_name }
+    it { is_expected.to validate_presence_of :mobile }
+    it { is_expected.to validate_presence_of :email }
   end
 
   describe 'associations' do
