@@ -7,13 +7,10 @@ RSpec.describe Tpr, type: :model do
     it { is_expected.to have_db_column :pulse }
   end
 
-  descibe 'validations' do
+  describe 'validations' do
     it { is_expected.to validate_presence_of :temperature }
-    it { is_expected.to validate_numerality_of :temperature }
     it { is_expected.to validate_presence_of :resp_rate }
-    it { is_expected.to validate_numerality_of :resp_rate }
     it { is_expected.to validate_presence_of :pulse }
-    it { is_expected.to validate_numerality_of :pulse }
   end
   
   describe 'associations' do
