@@ -20,5 +20,6 @@ RSpec.describe Note, type: :model do
 
   describe 'associations' do
     it { is_expected.to belong_to :staff }
+    it { is_expected.to belong_to :takes_notes }
   end
 end

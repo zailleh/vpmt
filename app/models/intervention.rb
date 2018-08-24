@@ -12,5 +12,9 @@
 #
 
 class Intervention < ApplicationRecord
-  belongs_to :admission
+  validates_presence_of :description
+
+  belongs_to :admission, :optional => true
+  belongs_to :appointment, :optional => true
+  belongs_to :staff
 end

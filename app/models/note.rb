@@ -12,5 +12,8 @@
 #
 
 class Note < ApplicationRecord
-  belongs_to :takes_notes, :polymorphic => true
+  validates_presence_of :details
+
+  belongs_to :staff
+  belongs_to :takes_notes, :polymorphic => true, :foreign_key => :parent_id
 end
