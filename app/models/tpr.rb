@@ -1,0 +1,2 @@
+class Tpr < ApplicationRecord
+end
