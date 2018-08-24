@@ -1,0 +1,2 @@
+class ScheduledIntervention < Intervention
+end
