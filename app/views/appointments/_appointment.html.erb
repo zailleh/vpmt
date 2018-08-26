@@ -1,0 +1,18 @@
+<div class="appointment summary">
+  <div class="patient-image">
+    <%= image_tag 'http://www.placekitten.com/300/300' %>
+  </div>
+  <div class="details">
+    <p><%= appointment.when %></p>
+    <p><%= appointment.patient.name %></p>
+    <p><%= appointment.patient.breed %></p>
+    <p><%= appointment.patient.date_of_birth %></p>
+  </div>
+  <div class="details">
+    <p><%= appointment.customer.first_name + ' ' + appointment.customer.last_name %></p>
+    <p><%= appointment.customer.mobile %></p>
+    <p class="notes">
+      <%= appointment.reason %>
+    </p>
+  </div>
+</div>

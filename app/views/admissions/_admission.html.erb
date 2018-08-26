@@ -1,0 +1,17 @@
+<div class="admission summary">
+  <div class="patient-image">
+    <%= image_tag 'http://www.placekitten.com/300/300' %>
+  </div>
+  <div class="details">
+    <p><%= admission.patient.name %></p>
+    <p><%= admission.patient.breed %></p>
+    <p><%= admission.patient.date_of_birth %></p>
+  </div>
+  <div class="details">
+    <p><%= admission.patient.customer.first_name + ' ' + admission.patient.customer.last_name %></p>
+    <p><%= admission.patient.customer.mobile %></p>
+    <p class="notes">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio possimus at officia consequuntur esse explicabo pariatur eveniet nemo? Vero alias fuga voluptatum vel deleniti repellendus ad voluptate enim ipsam beatae?
+    </p>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+
+
+.summary, .note {
+  display: grid;
+  background-color: white;
+  border-radius: 0.25em;
+  border: 1px solid lightgrey;
+  > * {
+    margin: .5em;
+  }
+  margin-bottom: .5em;
+}
+
+.patient, .appointment, .admission {
+  grid-template-columns: min-content auto 20em;
+}
+
+.note {
+  grid-template-columns: min-content auto;
+}
+
+.details {
+  p {
+    padding: 0.25em;
+    border: 1px solid #F5F5F5;
+    border-radius: 0.15em;
+    margin-top: 0;
+    margin-bottom: .75em;
+  }
+}

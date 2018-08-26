@@ -1,0 +1,17 @@
+<div class="patient summary">
+  <div class="patient-image">
+    <%= image_tag 'http://www.placekitten.com/300/300' %>
+  </div>
+  <div class="details">
+    <p><%= patient.name %></p>
+    <p><%= patient.breed %></p>
+    <p><%= patient.date_of_birth %></p>
+  </div>
+  <div class="details">
+    <p><%= patient.customer.first_name + ' ' + patient.customer.last_name %></p>
+    <p><%= patient.customer.mobile %></p>
+    <p class="notes">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio possimus at officia consequuntur esse explicabo pariatur eveniet nemo? Vero alias fuga voluptatum vel deleniti repellendus ad voluptate enim ipsam beatae?
+    </p>
+  </div>
+</div>
