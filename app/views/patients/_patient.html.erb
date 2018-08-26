@@ -3,7 +3,11 @@
     <%= image_tag 'http://www.placekitten.com/300/300' %>
   </div>
   <div class="details">
-    <p><%= patient.name %></p>
+    <% if params[:id] %>
+      <p><%= patient.name %></p>
+    <% else %>
+      <p><%= link_to patient.name, patient %></p>
+    <% end %>
     <p><%= patient.breed %></p>
     <p><%= patient.date_of_birth %></p>
   </div>
@@ -14,4 +18,7 @@
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio possimus at officia consequuntur esse explicabo pariatur eveniet nemo? Vero alias fuga voluptatum vel deleniti repellendus ad voluptate enim ipsam beatae?
     </p>
   </div>
+  <% unless params[:id] %>
+    <%= render partial: 'card_menu' %>
+  <% end %>
 </div>

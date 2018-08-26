@@ -3,7 +3,7 @@
     <%= image_tag 'http://www.placekitten.com/300/300' %>
   </div>
   <div class="details">
-    <p><%= admission.patient.name %></p>
+    <p><%= link_to admission.patient.name, admission %></p>
     <p><%= admission.patient.breed %></p>
     <p><%= admission.patient.date_of_birth %></p>
   </div>
