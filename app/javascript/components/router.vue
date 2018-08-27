@@ -25,7 +25,8 @@
     },
     computed: {
       viewComponent() {
-        return this.routes[this.currentRoute] || this.routes['NotFound'];
+        const route = this.routes[this.currentRoute] || this.routes['NotFound']
+        return route;
       }
     },
     render(createElement) {

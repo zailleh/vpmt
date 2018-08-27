@@ -1,5 +1,5 @@
 <template>
   <div>
-    I'm a patients listing!
+    I'm an admissions listing!
   </div>
 </template>
