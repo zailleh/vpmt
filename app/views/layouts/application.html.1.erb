@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VMPT</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
+  </head>
+
+  <body>
+    <header>
+      <div>
+        <span class="logo">VPMT - Wellpet</span>
+      </div>
+      <div>
+        <ul class="staff-menu">
+          <li>Log In</li>
+          <li>Somestuff</li>
+        </ul>
+      </div>
+    </header>
+    <div class="container">
+      <nav>
+        <ul>
+          <li>
+            <span>Appointments</span>
+           <ul class="submenu">
+              <li><%= link_to 'All', appointments_path %></li>
+              <li><%= link_to 'New', new_appointment_path %></li>
+              <li>Find</li>
+            </ul>
+          </li>
+          <li>
+            <span>Patients</span>
+            <ul class="submenu">
+              <li><%= link_to 'All', patients_path %></li>
+              <li><%= link_to 'New', new_patient_path %></li>
+              <li>Find</li>
+            </ul>
+          </li>
+          <li>
+            <span>Customers</span>
+           <ul class="submenu">
+              <li><%= link_to 'All', customers_path %></li>
+              <li><%= link_to 'New', new_customer_path %></li>
+              <li>Find</li>
+            </ul>
+          </li>
+          <li>
+            <span>Admissions</span>
+           <ul class="submenu">
+              <li><%= link_to 'All', admissions_path %></li>
+              <li><%= link_to 'New', new_admission_path %></li>
+              <li>Find</li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <main>
+      <%= yield %>
+      </main>
+    </div>
+  </body>
+</html>

@@ -27,6 +27,14 @@ st1 = Staff.create({
   photo_url: ''
 })
 
+st2 = Staff.create({
+  first_name: 'Tom',
+  last_name: 'Draper',
+  email: 'Tom.Draper@vpmt.com',
+  password: 'chicken',
+  photo_url: ''
+})
+
 # ROLES
 r1 = Role.create({name: 'Reception'})
 r2 = Role.create({name: 'Hospital'})
@@ -43,6 +51,13 @@ sh1 = Shift.create({
   role: r1
 })
 
+sh2 = Shift.create({
+  start: DateTime.now,
+  end: DateTime.now + 8.hours,
+  staff: st2,
+  role: r2
+})
+
 # CUSTOMERS
 c1 = Customer.create({
   first_name: 'Tim',
@@ -52,6 +67,17 @@ c1 = Customer.create({
   post_code: '1234',
   phone: '(02) 01201 01201',
   email: 'tim.caldwell@blah.co',
+  mobile: '04 2524 2524',
+})
+
+c2 = Customer.create({
+  first_name: 'Ryan',
+  last_name: 'Gosling',
+  street: '9 Blah Street',
+  suburb: 'Bighorn',
+  post_code: '1234',
+  phone: '(02) 01201 01201',
+  email: 'ryan.gosling@blah.co',
   mobile: '04 2524 2524',
 })
 
@@ -66,7 +92,44 @@ p1 = Patient.create({
   date_of_birth: Date.today - 7.years,
   breed: 'Domestic Short Hair',
   animal_type: 'Cat',
-  customer: c1
+  customer: c1,
+  img_url: "http://www.placekitten.com/#{rand(200..300)}/#{rand(200..300)}"
+})
+
+p2 = Patient.create({
+  name: 'Athena',
+  date_of_birth: Date.today - 5.years,
+  breed: 'Domestic Short Hair',
+  animal_type: 'Cat',
+  customer: c1,
+  img_url: "http://www.placekitten.com/#{rand(200..300)}/#{rand(200..300)}"
+})
+
+p3 = Patient.create({
+  name: 'Purrcy',
+  date_of_birth: Date.today - 4.months,
+  breed: 'Domestic Short Hair',
+  animal_type: 'Cat',
+  customer: c1,
+  img_url: "http://www.placekitten.com/#{rand(200..300)}/#{rand(200..300)}"
+})
+
+p4 = Patient.create({
+  name: 'Angie',
+  date_of_birth: Date.today - 4.years,
+  breed: 'Greyhound',
+  animal_type: 'Dog',
+  customer: c2,
+  img_url: "http://www.placekitten.com/#{rand(200..300)}/#{rand(200..300)}"
+})
+
+p5 = Patient.create({
+  name: 'Diesel',
+  date_of_birth: Date.today - 3.years,
+  breed: 'Staffy Cross',
+  animal_type: 'Dog',
+  customer: c2,
+  img_url: "http://www.placekitten.com/#{rand(200..300)}/#{rand(200..300)}"
 })
 
 # APPOINTMENTS (PATIENT + CUSTOMER + STAFF)
@@ -81,7 +144,15 @@ ap1 = Appointment.create({
   reason: 'Vomiting yellowy stuff frequently and has not been eating',
   patient: p1,
   customer: c1,
-  staff: st1
+  staff: st2
+})
+
+ap2 = Appointment.create({
+when: Date.today + 12.5.hours,
+reason: 'Unknown lump on rump',
+patient: p5,
+customer: c2,
+staff: st2
 })
 
 # ADMISSIONS (REQUIRES PATIENT + STAFF)
@@ -91,9 +162,16 @@ ap1 = Appointment.create({
 #  appointment_id :bigint(8)
 ad1 = Admission.create({
   reason: 'Appears to have something stuck in stomach',
-  staff: st1,
+  staff: st2,
   patient: p1,
   appointment: ap1
+})
+
+ad2 = Admission.create({
+  reason: 'Totes not cancer',
+  staff: st2,
+  patient: p5,
+  appointment: ap2
 })
 
 # TPRs (STAFF + ADMISSION = TPR)
@@ -102,13 +180,46 @@ ad1 = Admission.create({
 #  pulse        :float
 #  admission_id :bigint(8)
 #  staff_id     :bigint(8)
-t1 = Tpr.create({
-  temperature: 38.4,
-  resp_rate: 59,
-  pulse: 118,
+Tpr.create({
+  temperature: rand(37.0..40.0),
+  resp_rate: rand(50.0..80.0),
+  pulse:  rand(100.0..140.0),
   admission: ad1,
   staff: st1
 })
+
+Tpr.create({
+  temperature: rand(37.0..40.0),
+  resp_rate: rand(50.0..80.0),
+  pulse:  rand(100.0..140.0),
+  admission: ad1,
+  staff: st1
+})
+
+Tpr.create({
+  temperature: rand(37.0..40.0),
+  resp_rate: rand(50.0..80.0),
+  pulse:  rand(100.0..140.0),
+  admission: ad1,
+  staff: st1
+})
+
+Tpr.create({
+  temperature: rand(37.0..40.0),
+  resp_rate: rand(50.0..80.0),
+  pulse:  rand(100.0..140.0),
+  admission: ad2,
+  staff: st1
+})
+
+Tpr.create({
+  temperature: rand(37.0..40.0),
+  resp_rate: rand(50.0..80.0),
+  pulse:  rand(100.0..140.0),
+  admission: ad2,
+  staff: st1
+})
+
 
 
 # INTERVENTIONS (REQUIRES APPOINTMENT OR ADMISSION)
