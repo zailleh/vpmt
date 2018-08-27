@@ -1,28 +1,31 @@
 <script>
-import Vue from 'vue';
-import Home from './home.vue';
-import Patients from './patients.vue';
-import NotFound from './notfound.vue'
-
-const routes = {
-    '/': Home,
-    '/patients': Patients,
-  };
-
-  const path = window.location.pathname;
-  const last = path.length - 1;
-  
+  import Vue from 'vue';
 
   const Router = Vue.component('Router', {
     data() {
+      let path = window.location.pathname;
+      const last = path.length - 1;
+      path = path !== '/' && path[last] === '/' ? path.slice(0,last) : path
+
       return {
-        currentRoute: path !== '/' && path[last] === '/' ? path.slice(0,last) : path
+        currentRoute: path + window.location.hash
       }
+    },
+    props: {
+      routes: Object
+    },
+    created: function() {
+      window.addEventListener('popstate', () => { 
+        let path = window.location.pathname;
+        const last = path.length - 1;
+        path = path !== '/' && path[last] === '/' ? path.slice(0,last) : path
+        // debugger;
+        this.currentRoute =  path + window.location.hash
+      })
     },
     computed: {
       viewComponent() {
-        console.log(routes[this.currentRoute]);
-        return routes[this.currentRoute] || NotFound
+        return this.routes[this.currentRoute] || this.routes['NotFound'];
       }
     },
     render(createElement) {
