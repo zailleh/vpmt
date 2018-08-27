@@ -1,25 +1,24 @@
 <template>
   <div>
-    <AppointmentCard 
-      v-for="appointment in appointments" 
-      :appointment="appointment" 
-      :key="appointment.id"
-    />
+     <PatientCard v-if="loaded" v-bind:patient="patient" show/>
   </div>
 </template>
 
 
 <script>
-import AppointmentCard from './_appointmentcard.vue'
+import PatientCard from './patientcard.vue'
+
 export default {
-  data() {
+  props: ['id'],
+  data: function() {
     return {
-      appointments: this.getAppointments(),
+      patient: this.getPatientData(this.id),
+      loaded: false,
     }
   },
   methods: {
-    getAppointments() {
-      fetch('/appointments.json', {
+    getPatientData(id) {
+      fetch('/patients/'+id+'.json', {
         method: "GET", // *GET, POST, PUT, DELETE, etc.
         credentials: "same-origin", // include, same-origin, *omit
         headers: {
@@ -31,13 +30,14 @@ export default {
       .then(function(response){ return response.json()})
       .then((function(data) {
         // console.log(this);
-        this.appointments = data;
+        this.patient = data;
+        this.loaded = true;
         // console.log(this.patients);
       }).bind(this))
-    },
+    }
   },
   components: {
-    AppointmentCard
+    PatientCard
   }
 }
 </script>

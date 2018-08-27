@@ -1,6 +1,8 @@
 .menu {
   list-style: none;
   background-color: skyblue;
+  padding: 0;
+  margin: 0;
   > ul {
     margin: 0;
     padding: 0;
@@ -14,4 +16,8 @@
     }
   }
   
+}
+
+.menu.small {
+  font-size: .75em;
 }

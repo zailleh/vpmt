@@ -2,11 +2,11 @@
   <div :class="menuSize">
     <ul>
       <li>
-        Make Appointment
+        Admit Patient
       </li><li>
         Add Note
       </li><li>
-        Update Record
+        Take Payment
       </li><li>
         Customer Record
       </li>  

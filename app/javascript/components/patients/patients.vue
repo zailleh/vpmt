@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>All Patients</h1>
-    <PatientCard v-for="patient in patients" v-bind:patient="patient" b-bind:show="false" />
+    <PatientCard v-for="patient in patients" v-bind:patient="patient" />
   </div>
 </template>
 

@@ -17,11 +17,11 @@ export default {
           name: "Appointments",
           items: [
             {
-              href: "/#appointment",
+              href: "/#appointments",
               text: "All"
             },
             {
-              href: "/#appointment/new",
+              href: "/#appointments/new",
               text: "New"
             }
           ]
@@ -43,11 +43,11 @@ export default {
           name: "Customers",
           items: [
             {
-              href: "/#customer",
+              href: "/#customers",
               text: "All"
             },
             {
-              href: "/#customer/new",
+              href: "/#customers/new",
               text: "New"
             }
           ]
@@ -56,11 +56,11 @@ export default {
           name: "Admissions",
           items: [
             {
-              href: "/#admission",
+              href: "/#admissions",
               text: "All"
             },
             {
-              href: "/#admission/new",
+              href: "/#admissions/new",
               text: "New"
             }
           ]
