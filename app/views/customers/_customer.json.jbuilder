@@ -1,0 +1,1 @@
+json.extract! customer, :id, :first_name, :last_name, :street, :post_code, :suburb, :mobile, :phone, :email

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   scope :constraints => lambda { |req| req.format == :json } do
     resources :patients, :only => [:index, :show, :create, :new]
     resources :appointments, :only => [:index, :show, :create, :new]
+    resources :customers, :only => [:index, :show, :create, :new]
   end
 
   root :to => 'pages#home'

@@ -1,26 +1,37 @@
 <template>
   <div>
-    <h1>All Customers</h1>
     <CustomerCard 
-      v-for="customer in customers"
-      v-bind:customer="customer"
-      :key="customer.id" />
+      v-if="loaded"
+      v-bind:customer="customer" 
+      show
+    />
+    <PatientCard 
+      v-if="loaded"
+      v-for="patient in patients"
+      :patient="patient"
+      :key="patient.id"
+    />
   </div>
 </template>
 
 <script>
 import CustomerCard from './_customercard.vue'
+import PatientCard from '../patients/patientcard.vue'
 
 export default {
+  props: {
+    id: String,
+  },
   data: function() {
     return {
-      customers: this.getCustomers(),
+      customer: this.getCustomer(this.id),
+      patients: [],
       loaded: false,
     }
   },
   methods: {
-    getCustomers: function() {
-      fetch('/customers.json', {
+    getCustomer: function(id) {
+      fetch('/customers/'+id+'.json', {
         method: "GET", // *GET, POST, PUT, DELETE, etc.
         credentials: "same-origin", // include, same-origin, *omit
         headers: {
@@ -32,14 +43,16 @@ export default {
       .then(function(response){ return response.json()})
       .then((function(data) {
         // console.log(this);
-        this.customers = data;
+        this.customer = data;
+        this.patients = data.patients;
         this.loaded = true;
         // console.log(this.patients);
       }).bind(this))
     }
   },
   components: {
-    CustomerCard
+    CustomerCard,
+    PatientCard
   }
 }
 </script>

@@ -14,9 +14,11 @@
       <p>{{ patient.breed }}</p>
       <p>{{ patient.date_of_birth }}</p>
     </div>
-    <div class="details">
+    <div v-if="patient.customer" class="details">
       <p>
-        {{ patient.customer.first_name + ' ' + patient.customer.last_name }}
+        <a :href="'#customers/' + patient.customer.id" >
+          {{ patient.customer.first_name + ' ' + patient.customer.last_name }}
+        </a>
       </p>
       <p>
         {{ patient.customer.mobile }}

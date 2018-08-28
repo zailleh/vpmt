@@ -8,18 +8,14 @@
             {{ customer.first_name +' '+ customer.last_name }}
           </a>
         </p>
+      <p>{{ customer.phone }}</p>
       <p>{{ customer.mobile }}</p>
+      <p>{{ customer.email }}</p>
     </div>
     <div class="details">
-      <p>
-        {{ appointment.customer.first_name + ' ' + appointment.customer.last_name }}
-      </p>
-      <p>
-        {{ appointment.customer.mobile }}
-      </p>
-      <p class="notes">
-        {{ appointment.reason }}
-      </p>
+      <p>{{ customer.street }}</p>
+      <p>{{ customer.suburb }}</p>
+      <p>{{ customer.post_code }}</p>
     </div>
     <CardMenu v-if="!show" />
   </div>
@@ -29,7 +25,7 @@
 import CardMenu from './_cardmenu.vue'
 export default {
   props: {
-    appointment: Object,
+    customer: Object,
     show: Boolean
   },
   components: {
