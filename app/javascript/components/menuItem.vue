@@ -2,7 +2,7 @@
   <li v-on:click="toggleActive">
     <span>{{ name }}</span>
     <ul class="submenu">
-      <li v-for="item in items">
+      <li v-for="item in items" :key="item.text">
         <a v-bind:href="item.href">{{item.text}}</a>
       </li>
     </ul>

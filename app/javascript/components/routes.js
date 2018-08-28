@@ -2,6 +2,7 @@ import Home from './home.vue'
 import Patients from './patients/patients.vue'
 import Patient from './patients/patient.vue'
 import Admissions from './admissions/admissions.vue'
+import Admission from './admissions/admission.vue'
 import Appointments from './appointments/appointments.vue'
 import Appointment from './appointments/appointment.vue'
 import Customers from './customers/customers.vue'
@@ -14,6 +15,7 @@ export default {
     '/#patients': Patients,
     '/#patients/:id': Patient,
     '/#admissions': Admissions,
+    '/#admissions/:id': Admission,
     '/#appointments': Appointments,
     '/#appointments/:id': Appointment,
     '/#customers': Customers,

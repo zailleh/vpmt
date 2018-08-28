@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :patients, :only => [:index, :show, :create, :new]
     resources :appointments, :only => [:index, :show, :create, :new]
     resources :customers, :only => [:index, :show, :create, :new]
+    resources :admissions, :only => [:index, :show, :create, :new]
   end
 
   root :to => 'pages#home'

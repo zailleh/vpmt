@@ -1,7 +1,7 @@
 <template>
   <nav id="navbar">
     <ul>
-      <MenuItem v-for="value in sections" v-bind:name="value.name" v-bind:items="value.items"/>
+      <MenuItem v-for="value in sections" v-bind:name="value.name" v-bind:items="value.items" :key="value.name"/>
     </ul>
   </nav>
 </template>
