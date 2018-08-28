@@ -7,6 +7,7 @@ import Appointments from './appointments/appointments.vue'
 import Appointment from './appointments/appointment.vue'
 import Customers from './customers/customers.vue'
 import Customer from './customers/customer.vue'
+import CustomerForm from './customers/customerform.vue'
 import NotFound from './notfound.vue'
 
 export default {
@@ -19,6 +20,7 @@ export default {
     '/#appointments': Appointments,
     '/#appointments/:id': Appointment,
     '/#customers': Customers,
+    '/#customers/new': CustomerForm,
     '/#customers/:id': Customer,
     'NotFound': NotFound,
   };

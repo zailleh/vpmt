@@ -2,14 +2,12 @@
   <div :class="menuSize">
     <ul>
       <li>
-        Make Appointment
+        Add Pet
       </li><li>
         Add Note
       </li><li>
         Update Record
-      </li><li>
-        Customer Record
-      </li>  
+      </li>
     </ul>
   </div>
 </template>

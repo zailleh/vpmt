@@ -1,5 +1,5 @@
 <template>
-  <div class="appointment summary">
+  <div class="customer summary">
     <CardMenu v-if="show" large/>
     <div class="details">
         <p v-if="show">{{ customer.first_name +' '+ customer.last_name }}</p>
