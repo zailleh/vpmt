@@ -1,9 +1,7 @@
 json.partial! 'admissions/admission', admission: @admission
 
 # get related tprs
-json.tprs @admission.tprs do |tpr|
-  json.extract! tpr, :id
-end
+json.tprs @admission.tprs, partial: 'tprs/tpr', as: :tpr
 
 # get related tprs
 json.schedules @admission.schedules do |schedule|
@@ -16,6 +14,4 @@ json.interventions @admission.interventions do |intervention|
 end
 
 # get related notes
-json.notes @admission.notes do |note|
-  json.extract! note, :id, :details
-end
+json.notes @admission.notes, partial: 'notes/note', as: :note

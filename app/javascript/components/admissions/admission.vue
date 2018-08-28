@@ -9,16 +9,30 @@
       <!-- TODO: show latest note, tpr, intervention -->
     </div>
     <div class="admission-tabs">
-      <div id="tabs">
+      <div class="tabs" id="tabs">
         <ul>
-          <li class="selected">Notes</li>
-          <li>TPRs</li>
-          <li>Interventions</li>
-          <li>Schedules</li>
+          <li id="showNotes" 
+            v-on:click="selectTab"
+            :class="tabs.showNotes || ''"
+          >Notes</li>
+          <li id="showTPRs"
+            v-on:click="selectTab"
+            :class="tabs.showTPRs || ''"
+          >TPRs</li>
+          <li id="showInterventions"
+            v-on:click="selectTab"
+            :class="tabs.showInterventions || ''"
+          >Interventions</li>
+          <li id="showSchedules"
+            v-on:click="selectTab"
+            :class="tabs.showSchedules || ''"
+          >Schedules</li>
         </ul>
       </div>
       <div class="selected-data">
         <!-- TODO: put cards for selected type here -->
+        <NoteCard v-if="tabs.showNotes" v-for="note in notes" :note="note" :key="note.id"/>
+        <TPRCard v-if="tabs.showTPRs" v-for="tpr in tprs" :tpr="tpr" :key="tpr.id"/>
       </div>
     </div>
   </div>
@@ -27,6 +41,8 @@
 
 <script>
 import AdmissionCard from './_admissioncard.vue'
+import NoteCard from '../notes/_notecard.vue'
+import TPRCard from '../tprs/_tprcard.vue'
 export default {
   props: {
     id: String,
@@ -37,11 +53,24 @@ export default {
       loaded: false,
       tprs: [],
       notes: [],
+      tabs: {
+        showNotes: false,
+        showTPRs: 'selected',
+      },
       interventions: [],
       schedules: [],
     }
   },
   methods: {
+    selectTab(e) {
+      Object.keys(this.tabs).forEach( (tab) => {
+        if (tab === e.target.id) {
+          this.tabs[tab] = 'selected';
+        } else {
+          this.tabs[tab] = false;
+        }
+      });
+    },
     getAdmission(id) {
       fetch('/admissions/'+id+'.json', {
         method: "GET", // *GET, POST, PUT, DELETE, etc.
@@ -64,7 +93,9 @@ export default {
     },
   },
   components: {
-    AdmissionCard
+    AdmissionCard,
+    NoteCard,
+    TPRCard,
   }
 }
 </script>
