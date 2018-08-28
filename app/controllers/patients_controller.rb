@@ -17,19 +17,25 @@ class PatientsController < ApplicationController
   # POST /patients
   def create
     @patient = Patient.new patient_params
-    @patient.date_of_birth = Date.new
-    @patient.customer = Customer.first
-    if @patient.save
-      redirect_to patient_path @patient
-    else
-      render :new
-    end
+    
+    # puts params[:patient][:img]
+    # Cloudinary::Uploader.upload(params[:img])
+
+    @patient.img_url = Cloudinary::Uploader.upload( params[:img])['url']
+
+    # Cloudinary::Uploader.upload("dog.mp4", 
+    #   :folder => "my_folder/my_sub_folder/", :public_id => "my_dog", :overwrite => true, 
+    #   :notification_url => "https://requestb.in/12345abcd", :resource_type => "video")
+    
+
+    record_save @patient
   end
 
 
   private
     def patient_params
-      params.require(:patient).permit(:name, :breed, :date_of_birth, :customer_id, :animal_type)
+      puts params.inspect
+      params.permit(:name, :breed, :date_of_birth, :customer_id, :animal_type)
     end
 
 end

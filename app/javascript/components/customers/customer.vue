@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import CustomerCard from './_customercard.vue'
-import PatientCard from '../patients/patientcard.vue'
+import CustomerCard from './_customercard.vue';
+import PatientCard from '../patients/patientcard.vue';
 
 export default {
   props: {
