@@ -120,7 +120,7 @@ p4 = Patient.create({
   breed: 'Greyhound',
   animal_type: 'Dog',
   customer: c2,
-  img_url: "http://www.placekitten.com/#{rand(200..300)}/#{rand(200..300)}"
+  img_url: "http://www.placepuppy.net/#{rand(200..300)}/#{rand(200..300)}"
 })
 
 p5 = Patient.create({
@@ -129,7 +129,7 @@ p5 = Patient.create({
   breed: 'Staffy Cross',
   animal_type: 'Dog',
   customer: c2,
-  img_url: "http://www.placekitten.com/#{rand(200..300)}/#{rand(200..300)}"
+  img_url: "http://www.placepuppy.net/#{rand(200..300)}/#{rand(200..300)}"
 })
 
 # APPOINTMENTS (PATIENT + CUSTOMER + STAFF)
