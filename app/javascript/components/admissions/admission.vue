@@ -5,10 +5,10 @@
       v-if="loaded"
       show
     />
-    <div class="admission-latest">
+    <div v-if="loaded" class="admission-latest">
       <!-- TODO: show latest note, tpr, intervention -->
     </div>
-    <div class="admission-tabs">
+    <div v-if="loaded" class="admission-tabs">
       <div class="tabs" id="tabs">
         <ul>
           <li id="showNotes" 
@@ -33,6 +33,8 @@
         <!-- TODO: put cards for selected type here -->
         <NoteCard v-if="tabs.showNotes" v-for="note in notes" :note="note" :key="note.id"/>
         <TPRCard v-if="tabs.showTPRs" v-for="tpr in tprs" :tpr="tpr" :key="tpr.id"/>
+        <InterventionCard v-if="tabs.showInterventions" v-for="intervention in interventions" :intervention="intervention" :key="intervention.id"/>
+        <ScheduleCard v-if="tabs.showSchedules" v-for="schedule in schedules" :schedule="schedule" :key="schedule.id"/>
       </div>
     </div>
   </div>
@@ -43,6 +45,9 @@
 import AdmissionCard from './_admissioncard.vue'
 import NoteCard from '../notes/_notecard.vue'
 import TPRCard from '../tprs/_tprcard.vue'
+import InterventionCard from '../interventions/_interventioncard.vue'
+import ScheduleCard from '../schedules/_schedulecard.vue'
+
 export default {
   props: {
     id: String,
@@ -51,12 +56,14 @@ export default {
     return {
       admission: this.getAdmission(this.id),
       loaded: false,
-      tprs: [],
-      notes: [],
       tabs: {
         showNotes: false,
         showTPRs: 'selected',
+        showInterventions: false,
+        showSchedules: false,
       },
+      tprs: [],
+      notes: [],
       interventions: [],
       schedules: [],
     }
@@ -87,7 +94,7 @@ export default {
         this.tprs = data.tprs;
         this.notes = data.notes;
         this.interventions = data.interventions;
-        this.schedule = data.schedules;
+        this.schedules = data.schedules;
         this.loaded = true;
       }).bind(this))
     },
@@ -96,6 +103,8 @@ export default {
     AdmissionCard,
     NoteCard,
     TPRCard,
+    InterventionCard,
+    ScheduleCard,
   }
 }
 </script>

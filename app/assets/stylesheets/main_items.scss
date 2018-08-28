@@ -16,7 +16,7 @@
   }
 }
 
-.note, .tpr {
+.note, .tpr, .intervention, .schedule {
   grid-template-columns: min-content auto;
   > .menu {
     grid-column: 1 / 3;
