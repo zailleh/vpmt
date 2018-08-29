@@ -51,7 +51,6 @@ export default {
       new_id: null,
     }
   },
-  mixins: [closePopup],
   computed: {
     formData() {
       const formData = new FormData();
@@ -66,6 +65,7 @@ export default {
       return formData
     }
   },
+  mixins: [closePopup],
   methods: {
     imgAdded(e) {
       const file = e.target.files[0];
@@ -89,8 +89,8 @@ export default {
         } else {
           // close self if popup redirect to new patient's page
           window.location.href = '/#patients/' + data.new_id;
-          // close(); //close popup from mixin
-          $root.children[0].closePopup();
+          this.closePopup(); //close popup from mixin
+          // this.$root.children[0].closePopup();
         }
       }).bind(this))
     }

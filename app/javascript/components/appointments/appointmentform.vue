@@ -72,6 +72,7 @@ export default {
       this.when();
     }
   },
+  mixins: [closePopup],
   methods: {
     when() {
       this.appointment.when = this.date + " " + this.time
@@ -123,7 +124,9 @@ export default {
         } else {
           // redirect to new customer's page
           window.location.href = '/#appointments/' + data.new_id;
-          close();
+          console.log(this);
+          this.closePopup()
+          
         }
         // console.log(this.patients);
       }).bind(this))

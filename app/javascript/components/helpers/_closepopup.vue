@@ -1,5 +1,5 @@
 <template>
-  <button v-on:click="close">&times;</button>
+  <button v-on:click="closePopup">&times;</button>
 </template>
 
 <script>

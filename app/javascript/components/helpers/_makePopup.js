@@ -8,7 +8,7 @@ module.exports.makePopup = {
 
 module.exports.closePopup = {
   methods: {
-    close() {
+    closePopup() {
       this.$root.$children[0].closePopup();
     }
   }
