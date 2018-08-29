@@ -13,16 +13,37 @@ export default {
   data: function() {
     return {
       sections: {
+        customers: {
+          name: "Clients",
+          items: [
+            {
+              href: "/#customers",
+              text: "All"
+            },
+            {
+              href: "/#customers/new",
+              text: "New"
+            }
+          ]
+        },
         appointments: {
           name: "Appointments",
           items: [
             {
-              href: "/#appointments",
-              text: "All"
+              href: "/#appointments/schedule",
+              text: "Schedule"
             },
             {
-              href: "/#appointments/new",
-              text: "New"
+              href: "/#appointments/checked-in",
+              text: "Checked-In"
+            },
+            {
+              href: "/#appointments/consult",
+              text: "In Consult"
+            },
+            {
+              href: "/#appointments/pay",
+              text: "Ready-to-Pay"
             }
           ]
         },
@@ -39,29 +60,49 @@ export default {
             }
           ]
         },
-        customers: {
-          name: "Customers",
+        admissions: {
+          name: "Inpatients",
           items: [
             {
-              href: "/#customers",
-              text: "All"
+              href: "/#admissions",
+              text: "Hospital"
             },
             {
-              href: "/#customers/new",
-              text: "New"
-            }
+              href: "/#admissions",
+              text: "Day Patient"
+            },
+            {
+              href: "/#admissions",
+              text: "Proceedure"
+            },
+            {
+              href: "/#admissions",
+              text: "Strays"
+            },
+            {
+              href: "/#admissions",
+              text: "Strays (Injured)"
+            },
+            {
+              href: "/#admissions",
+              text: "Wildlife"
+            },
+            {
+              href: "/#admissions",
+              text: "Wildlife (Injured)"
+            },
           ]
         },
-        admissions: {
-          name: "Admissions",
+        boarding: {
+          name: "Boarding",
           items: [
             {
               href: "/#admissions",
               text: "All"
             },
             {
-              href: "/#admissions/new",
-              text: "New"
+              href: "/#admissions",
+              text: "With Meds"
             }
           ]
         }

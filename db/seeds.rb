@@ -12,6 +12,7 @@ Intervention.destroy_all
 Tpr.destroy_all
 Admission.destroy_all
 Appointment.destroy_all
+AppointmentStatus.destroy_all
 Patient.destroy_all
 Customer.destroy_all
 Shift.destroy_all
@@ -132,6 +133,23 @@ p5 = Patient.create({
   img_url: "http://www.placepuppy.net/#{rand(200..300)}/#{rand(200..300)}"
 })
 
+# APPOINTMENT STATUS
+as1 = AppointmentStatus.create({
+  status: 'Booked'
+})
+as2 = AppointmentStatus.create({
+  status: 'Checked-In'
+})
+as3 = AppointmentStatus.create({
+  status: 'Consult'
+})
+as4 = AppointmentStatus.create({
+  status: 'Ready to Pay'
+})
+as5 = AppointmentStatus.create({
+  status: 'Complete'
+})
+
 # APPOINTMENTS (PATIENT + CUSTOMER + STAFF)
 #  when         :datetime
 #  reason       :text
@@ -144,7 +162,8 @@ ap1 = Appointment.create({
   reason: 'Vomiting yellowy stuff frequently and has not been eating',
   patient: p1,
   customer: c1,
-  staff: st2
+  staff: st2,
+  appointment_status: as1
 })
 
 ap2 = Appointment.create({
@@ -152,7 +171,8 @@ when: Date.today + 12.5.hours,
 reason: 'Unknown lump on rump',
 patient: p5,
 customer: c2,
-staff: st2
+staff: st2,
+appointment_status: as1
 })
 
 # ADMISSIONS (REQUIRES PATIENT + STAFF)

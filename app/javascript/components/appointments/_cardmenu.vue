@@ -7,7 +7,7 @@
         Add Note
       </li><li>
         Take Payment
-      </li><li>
+      </li><li @click="goToCustomer">
         Customer Record
       </li>  
     </ul>
@@ -23,6 +23,12 @@ export default {
   },
   props: {
     large: Boolean
+  },
+  methods: {
+    goToCustomer() {
+      const custID = this.$parent.$props.appointment.customer.id;
+      window.location.href = '/#customers/' + custID;
+    }
   }
 }
 </script>

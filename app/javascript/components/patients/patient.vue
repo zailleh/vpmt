@@ -1,12 +1,16 @@
 <template>
   <div>
      <PatientCard v-if="loaded" v-bind:patient="patient" show/>
+     <PatientHistory v-if="loaded" :lists="lists" />
   </div>
 </template>
 
 
 <script>
-import PatientCard from './patientcard.vue'
+import PatientCard from './patientcard.vue';
+import PatientHistory from './_patienthistory.vue';
+import AdmissionCard from '../admissions/_admissioncard_sml.vue'
+import AppointmentCard from '../appointments/_appointmentcard_sml.vue'
 
 export default {
   props: ['id'],
@@ -14,6 +18,22 @@ export default {
     return {
       patient: this.getPatientData(this.id),
       loaded: false,
+    }
+  },
+  computed: {
+    lists() {
+      return [
+        {
+          component: AdmissionCard,
+          name: 'admission',
+          list: this.patient.admissions,
+        },
+        {
+          component: AppointmentCard,
+          name: 'appointment',
+          list: this.patient.appointments,
+        }
+      ]
     }
   },
   methods: {
@@ -37,7 +57,8 @@ export default {
     }
   },
   components: {
-    PatientCard
+    PatientCard,
+    PatientHistory
   }
 }
 </script>

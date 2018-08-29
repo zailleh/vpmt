@@ -3,12 +3,9 @@
 </template>
 
 <script>
+import { closePopup } from './_makePopup.js'
+
 export default {
-  methods: {
-    close() {
-      this.$root.$children[0].closePopup();
-    }
-  }
+  mixins: [ closePopup ]
 }
 </script>
-

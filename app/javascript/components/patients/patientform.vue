@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import { closePopup } from '../helpers/_makePopup.js'
+
 export default {
   props: ['customer_id'],
   data: function() {
@@ -49,6 +51,7 @@ export default {
       new_id: null,
     }
   },
+  mixins: [closePopup],
   computed: {
     formData() {
       const formData = new FormData();
@@ -86,7 +89,7 @@ export default {
         } else {
           // close self if popup redirect to new patient's page
           window.location.href = '/#patients/' + data.new_id;
-          this.$root.$children[0].closePopup();
+          close(); //close popup from mixin
         }
       }).bind(this))
     }
