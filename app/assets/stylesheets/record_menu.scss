@@ -1,18 +1,22 @@
+@import "_main.scss";
+
 .menu {
   list-style: none;
-  background-color: skyblue;
+  background-color: $color-menu-option;
   padding: 0;
   margin: 0;
   > ul {
     margin: 0;
     padding: 0;
     > li {
+      background-color: $color-menu-option;
       display: inline-block;
       padding: .5em 1em;
+      border-right: 0.25em solid $color-menu-active;
       cursor: pointer;
     }
     > li:hover {
-      background-color: royalblue;
+      background-color: $color-menu-active;
       color:white;
     }
   }

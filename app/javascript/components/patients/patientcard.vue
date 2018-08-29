@@ -1,16 +1,17 @@
 <template>
   <div class="patient summary">
+    <p v-if="show" class="card-title">Patient: {{ patient.name }}</p>
+    <p v-else class="card-title">
+      <a v-bind:href="'#patients/' + patient.id">
+        Patient: {{ patient.name }}
+      </a>
+    </p>
     <CardMenu v-if="show"  large/>
     <div class="patient-image">
       <img v-bind:src="patient.img_url" />
     </div>
     <div class="details">
-        <p v-if="show">{{ patient.name }}</p>
-        <p v-else>
-          <a v-bind:href="'#patients/' + patient.id">
-            {{ patient.name }}
-          </a>
-        </p>
+        
       <p>{{ patient.breed }}</p>
       <p>{{ patient.date_of_birth }}</p>
     </div>

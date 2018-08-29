@@ -1,21 +1,39 @@
 <template>
   <div class="customer summary">
+    <p v-if="show" class="card-title">Client: {{ customer.first_name +' '+ customer.last_name }}</p>
+    <p v-else class="card-title">
+      <a v-bind:href="'#customers/' + customer.id">
+        Client: {{ customer.first_name +' '+ customer.last_name }}
+      </a>
+    </p>
     <CardMenu v-if="show" large/>
     <div class="details">
-        <p v-if="show">{{ customer.first_name +' '+ customer.last_name }}</p>
-        <p v-else>
-          <a v-bind:href="'#customers/' + customer.id">
-            {{ customer.first_name +' '+ customer.last_name }}
-          </a>
-        </p>
-      <p>{{ customer.phone }}</p>
-      <p>{{ customer.mobile }}</p>
-      <p>{{ customer.email }}</p>
+      <fieldset>
+        <label>Phone:</label>
+        <p>{{ customer.phone }}</p>
+      </fieldset>
+      <fieldset>
+        <label>Mobile:</label>
+        <p>{{ customer.mobile }}</p>
+      </fieldset>
+      <fieldset>
+        <label>Email:</label>
+        <p>{{ customer.email }}</p>
+      </fieldset>
     </div>
     <div class="details">
-      <p>{{ customer.street }}</p>
-      <p>{{ customer.suburb }}</p>
-      <p>{{ customer.post_code }}</p>
+      <fieldset>
+        <label>Street:</label>
+        <p>{{ customer.street }}</p>
+      </fieldset>
+      <fieldset>
+        <label>Suburb:</label>
+        <p>{{ customer.suburb }}</p>
+      </fieldset>
+      <fieldset>
+        <label>Post Code:</label>
+        <p>{{ customer.post_code }}</p>
+      </fieldset>
     </div>
     <CardMenu v-if="!show" />
   </div>

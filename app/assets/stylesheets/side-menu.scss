@@ -1,25 +1,29 @@
+@import "_main.scss";
+
 nav {
   > ul {
     list-style: none;
     margin: 0;
     padding: 0;
     > li:hover {
-      background-color: lightseagreen;
+      background-color: $color-menu-active;
       cursor: pointer;
     }
     > li {
       color: white;
-      background-color: royalblue;
+      background-color: $color-menu-option;
       > span {
-        padding: .25em;
+        padding: .5em;
         display: inline-block;
       }
       .submenu {
+        border-top: 0.25em solid $color-menu-active;
         list-style: none;
         padding: 0;
-        > li {
-          background-color: skyblue;
+        > li > a {
+          background-color: $color-menu-sub;
           box-sizing: content-box;
+          display: block;
           padding: 0 .5em;
           height: 0em;
           overflow: hidden;
@@ -28,9 +32,19 @@ nav {
       }
 
     }
-    > li.active > .submenu > li {
-      padding: .5em .5em;
-      height: 1em;
+    > li.active {
+      background-color: $color-menu-active;
+      > .submenu {
+        border-top: 0.25em solid $color-highlight;      
+        > li > a {
+          padding: .5em .5em .5em 1em;
+          height: 1.5em;
+          border-bottom: 1px solid $color-menu-option;
+        }
+        > li > a:hover {
+          background-color: $color-menu-option;
+        }
+      }
     }
   }
 }
