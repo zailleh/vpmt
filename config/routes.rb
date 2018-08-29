@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :appointments, :only => [:index, :show, :create, :new]
     resources :customers, :only => [:index, :show, :create, :new]
     resources :admissions, :only => [:index, :show, :create, :new]
+    resources :notes, :only => [:create]
     scope '/search' do
       post '/staff' => 'search#staff'
     end

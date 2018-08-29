@@ -27,7 +27,7 @@
         <label for="img">Photo:</label>
         <input name="img" type="file" accept="image/*" @change="imgAdded"/>
       </fieldset>
-      <button>Submit</button>
+      <button class="btn btn-submit">Submit</button>
     </form>
   </div>
 </template>

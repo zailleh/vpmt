@@ -3,7 +3,7 @@
     <ul>
       <li @click="popup(appointment, parentParams)">
         Make Appointment
-      </li><li>
+      </li><li @click="popup(noteForm, noteProps)">
         Add Note
       </li><li>
         Update Record
@@ -16,14 +16,19 @@
 
 <script>
 import { makePopup } from '../helpers/_makePopup.js'
-
+import NoteForm from '../notes/_noteform.vue'
 import AppointmentForm from '../appointments/appointmentform.vue'
 
 export default {
   data: function() {
     return {
       menuSize: 'menu' + (this.large ? '' : ' small'),
-      appointment: AppointmentForm
+      appointment: AppointmentForm,
+      noteForm: NoteForm,
+      noteProps: {
+        parent_id: this.$parent.patient.id,
+        takes_notes_type: 'Patient'
+      }
     }
   },
   computed: {

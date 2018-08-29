@@ -34,7 +34,7 @@
         <label for="reason">Reason:</label>
         <textarea name="reason" type="text" v-model="appointment.reason"/>
       </fieldset>
-      <button>Submit</button>
+      <button class="btn btn-submit">Submit</button>
     </form>
   </div>
 </template>

@@ -39,7 +39,7 @@
         <label for="post_code">Postcode:</label>
         <input name="post_code" type="string" v-model="customer.post_code"/>
       </fieldset>
-      <button>Submit</button>
+      <button class="btn btn-submit">Submit</button>
     </form>
   </div>
 </template>
