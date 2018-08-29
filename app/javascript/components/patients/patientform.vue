@@ -89,7 +89,8 @@ export default {
         } else {
           // close self if popup redirect to new patient's page
           window.location.href = '/#patients/' + data.new_id;
-          close(); //close popup from mixin
+          // close(); //close popup from mixin
+          $root.children[0].closePopup();
         }
       }).bind(this))
     }
