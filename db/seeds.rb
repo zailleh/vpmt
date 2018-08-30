@@ -127,7 +127,7 @@ end
 #  mobile     :string
 #  email      :string
 customers = []
-1.upto 300 do
+1.upto 100 do
   firstname =  FIRST_NAMES.sample
   surname = SURNAMES.sample
   cust = Customer.create!({
@@ -151,7 +151,7 @@ customers = []
   #  animal_type   :string
   #  customer_id   :bigint(8)
   #  img_url       :text
-  1.upto rand(1..3) do
+  1.upto rand(1..2) do
     if rand > 0.5 
       # make dog
       patient = Patient.create!({
@@ -183,7 +183,7 @@ customers = []
     #  patient_id   :bigint(8)
     #  admission_id :bigint(8)
     #  customer_id  :bigint(8)
-    1.upto rand(1..5) do
+    1.upto rand(0..2) do
       apdate = Date.today + rand(-7..7).days + rand(9..19).hours
       ap = Appointment.create!({
         :when => apdate,
