@@ -1,6 +1,8 @@
 <template>
   <div>
+    <Loader v-if="!loaded" />
     <AppointmentCard 
+      v-if="loaded"
       v-for="appointment in appointments" 
       :appointment="appointment" 
       :key="appointment.id"
@@ -11,13 +13,16 @@
 
 <script>
 import AppointmentCard from './_appointmentcard.vue'
+import Loader from '../loader.vue';
+
 export default {
   props: {
     filter: String
   },
   data: function() {
     return {
-      appointments: this.getAppointments()
+      appointments: this.getAppointments(),
+      loaded: false,
     }
   },
   watch: {
@@ -37,11 +42,13 @@ export default {
       .then(function(response){ return response.json()})
       .then((function(data) {
         this.appointments = data;
+        this.loaded = true;
       }).bind(this))
     },
   },
   components: {
-    AppointmentCard
+    AppointmentCard,
+    Loader
   }
 }
 </script>

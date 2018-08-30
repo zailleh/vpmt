@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Loader v-if="!loaded" />
     <AdmissionCard 
       :admission="admission" 
       v-if="loaded"
@@ -42,11 +43,12 @@
 
 
 <script>
-import AdmissionCard from './_admissioncard.vue'
-import NoteCard from '../notes/_notecard.vue'
-import TPRCard from '../tprs/_tprcard.vue'
-import InterventionCard from '../interventions/_interventioncard.vue'
-import ScheduleCard from '../schedules/_schedulecard.vue'
+import AdmissionCard from './_admissioncard.vue';
+import NoteCard from '../notes/_notecard.vue';
+import TPRCard from '../tprs/_tprcard.vue';
+import InterventionCard from '../interventions/_interventioncard.vue';
+import ScheduleCard from '../schedules/_schedulecard.vue';
+import Loader from '../loader.vue';
 
 export default {
   props: {
@@ -105,6 +107,7 @@ export default {
     TPRCard,
     InterventionCard,
     ScheduleCard,
+    Loader,
   }
 }
 </script>

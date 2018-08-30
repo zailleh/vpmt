@@ -1,7 +1,8 @@
 <template>
   <div>
-     <PatientCard v-if="loaded" v-bind:patient="patient" show/>
-     <PatientHistory v-if="loaded" :lists="lists" />
+    <Loader v-if="!loaded" />
+    <PatientCard v-if="loaded" v-bind:patient="patient" show/>
+    <PatientHistory v-if="loaded" :lists="lists" />
   </div>
 </template>
 
@@ -9,8 +10,9 @@
 <script>
 import PatientCard from './patientcard.vue';
 import PatientHistory from './_patienthistory.vue';
-import AdmissionCard from '../admissions/_admissioncard_sml.vue'
-import AppointmentCard from '../appointments/_appointmentcard_sml.vue'
+import AdmissionCard from '../admissions/_admissioncard_sml.vue';
+import AppointmentCard from '../appointments/_appointmentcard_sml.vue';
+import Loader from '../loader.vue';
 
 export default {
   props: ['id'],
@@ -58,7 +60,8 @@ export default {
   },
   components: {
     PatientCard,
-    PatientHistory
+    PatientHistory,
+    Loader
   }
 }
 </script>

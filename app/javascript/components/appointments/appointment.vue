@@ -1,13 +1,19 @@
 <template>
+  <div>
+    <Loader v-if="!loaded" />
     <AppointmentCard 
       :appointment="appointment" 
       v-if="loaded"
-      show/>
+      show
+    />
+  </div>
 </template>
 
 
 <script>
-import AppointmentCard from './_appointmentcard.vue'
+import AppointmentCard from './_appointmentcard.vue';
+import Loader from '../loader.vue';
+
 export default {
   props: {
     id: String,
@@ -39,7 +45,8 @@ export default {
     },
   },
   components: {
-    AppointmentCard
+    AppointmentCard,
+    Loader,
   }
 }
 </script>

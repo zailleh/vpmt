@@ -1,6 +1,8 @@
 <template>
   <div>
+    <Loader v-if="!loaded" />
     <AdmissionCard 
+      v-else
       v-for="admission in admissions" 
       :admission="admission" 
       :key="admission.id"
@@ -10,7 +12,9 @@
 
 
 <script>
-import AdmissionCard from './_admissioncard.vue'
+import AdmissionCard from './_admissioncard.vue';
+import Loader from '../loader.vue';
+
 export default {
   data() {
     return {
@@ -37,7 +41,8 @@ export default {
     },
   },
   components: {
-    AdmissionCard
+    AdmissionCard,
+    Loader
   }
 }
 </script>

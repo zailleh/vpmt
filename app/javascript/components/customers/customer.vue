@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Loader v-if="!loaded" />
     <CustomerCard 
       v-if="loaded"
       v-bind:customer="customer" 
@@ -17,6 +18,7 @@
 <script>
 import CustomerCard from './_customercard.vue';
 import PatientCard from '../patients/patientcard.vue';
+import Loader from '../loader.vue'
 
 export default {
   props: {
@@ -52,7 +54,8 @@ export default {
   },
   components: {
     CustomerCard,
-    PatientCard
+    PatientCard,
+    Loader
   }
 }
 </script>

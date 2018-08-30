@@ -1,17 +1,20 @@
 <template>
   <div>
     <h1>All Patients</h1>
-    <PatientCard v-for="patient in patients" v-bind:patient="patient" :key="patient.id" />
+    <Loader v-if="!loaded" />
+    <PatientCard v-else v-for="patient in patients" v-bind:patient="patient" :key="patient.id" />
   </div>
 </template>
 
 <script>
 import PatientCard from './patientcard.vue'
+import Loader from '../loader.vue'
 
 export default {
   data: function() {
     return {
       patients: this.getPatients(),
+      loaded: false,
     }
   },
   methods: {
@@ -29,12 +32,14 @@ export default {
       .then((function(data) {
         // console.log(this);
         this.patients = data;
+        this.loaded = true;
         // console.log(this.patients);
       }).bind(this))
     }
   },
   components: {
-    PatientCard
+    PatientCard,
+    Loader
   }
 }
 </script>

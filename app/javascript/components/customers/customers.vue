@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>All Customers</h1>
-    <CustomerCard 
+    <Loader v-if="!loaded" />
+    <CustomerCard
+      v-if="loaded" 
       v-for="customer in customers"
       v-bind:customer="customer"
       :key="customer.id" />
@@ -9,7 +11,8 @@
 </template>
 
 <script>
-import CustomerCard from './_customercard.vue'
+import CustomerCard from './_customercard.vue';
+import Loader from '../loader.vue';
 
 export default {
   data: function() {
@@ -39,7 +42,8 @@ export default {
     }
   },
   components: {
-    CustomerCard
+    CustomerCard,
+    Loader
   }
 }
 </script>
