@@ -64,6 +64,59 @@ as2.save!
 as3.save!
 as4.save!
 as5.save!
+apstat = [] << as1 << as2 << as3 << as4 << as5
+
+# ADMISSION STATUS
+ads1 = AdmitStatus.create!({
+  status: 'Booked'
+})
+ads2 = AdmitStatus.create!({
+  status: 'Pre-Admit'
+})
+ads3 = AdmitStatus.create!({
+  status: 'Admitted'
+})
+ads4 = AdmitStatus.create!({
+  status: 'Ready to Discharge'
+})
+ads5 = AdmitStatus.create!({
+  status: 'Discharged'
+})
+
+ads1.next_status = ads2
+
+ads2.previous_status = ads1
+ads2.next_status = ads3
+
+ads3.previous_status = ads2
+ads3.next_status = ads4
+
+ads4.previous_status = ads3
+ads4.next_status = ads5
+
+ads5.previous_status = ads4
+
+adstat = []
+ads1.save!
+ads2.save!
+ads3.save!
+ads4.save!
+ads5.save!
+
+adstat = [] << ads1 << ads2 << ads3 << ads4 << ads5
+
+# ADMIT TYPES
+#  type_name  :string
+ats = []
+ats << AdmitType.create({:type_name => 'Hospital'})
+ats << AdmitType.create({:type_name => 'Boarding'})
+ats << AdmitType.create({:type_name => 'Proceedure'})
+ats << AdmitType.create({:type_name => 'Boarding Meds'})
+ats << AdmitType.create({:type_name => 'Day Patient'})
+ats << AdmitType.create({:type_name => 'Stray'})
+ats << AdmitType.create({:type_name => 'Stray (Injured)'})
+ats << AdmitType.create({:type_name => 'Wildlife'})
+ats << AdmitType.create({:type_name => 'Wildlife (Injured)'})
 
 staff = []
 1.upto 50 do
@@ -191,7 +244,7 @@ customers = []
         :staff => staff.sample,
         :patient => patient,
         :customer => cust,
-        :status => (apdate < DateTime.now - 1.hour ? as5 : apdate < DateTime.now ? as3 : as1)
+        :status => apstat.sample
       })
 
       1.upto rand(0..1) do
@@ -200,11 +253,17 @@ customers = []
         #  staff_id       :bigint(8)
         #  patient_id     :bigint(8)
         #  appointment_id :bigint(8)
+        admit_at = Date.today + rand(-7..7).days + rand(9..19).hours
+        discharge_at = admit_at + rand(1..7).days + rand(1..4).hours
         admission = Admission.create!({
           :reason => Faker::Lorem.sentence,
           :staff => staff.sample,
           :patient => patient,
-          :appointment => ap
+          :appointment => ap,
+          :admit_type => ats.sample,
+          :status => adstat.sample,
+          :admit_at => admit_at,
+          :discharge_at => discharge_at
         })
 
         1.upto rand(2..5) do
@@ -232,10 +291,16 @@ customers = []
       #  staff_id       :bigint(8)
       #  patient_id     :bigint(8)
       #  appointment_id :bigint(8)  
+      admit_at = Date.today + rand(-7..7).days + rand(9..19).hours
+      discharge_at = admit_at + rand(1..7).days + rand(1..4).hours
       admission = Admission.create!({
         :reason => Faker::Lorem.sentence,
         :staff => staff.sample,
         :patient => patient,
+        :admit_type => ats.sample,
+        :status => adstat.sample,
+        :admit_at => admit_at,
+        :discharge_at => discharge_at
       })
 
         1.upto rand(2..5) do

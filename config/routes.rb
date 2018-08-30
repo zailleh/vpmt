@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :notes, :only => [:create]
 
     get '/appointments/filter/:filter' => "appointments#filter"
+    get '/admissions/filter/:filter' => "admissions#filter"
     
     scope '/search' do
       post '/staff' => 'search#staff'

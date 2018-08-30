@@ -16,14 +16,21 @@ import AdmissionCard from './_admissioncard.vue';
 import Loader from '../loader.vue';
 
 export default {
+  props: {
+    filter: String,
+  },
   data() {
     return {
+      loaded: false,
       admissions: this.getAdmissions(),
     }
+  },  
+  watch: {
+    filter: function(){this.getAdmissions()},
   },
   methods: {
     getAdmissions() {
-      fetch('/admissions.json', {
+      fetch('/admissions/filter/'+this.filter+'.json', {
         method: "GET", // *GET, POST, PUT, DELETE, etc.
         credentials: "same-origin", // include, same-origin, *omit
         headers: {
@@ -34,9 +41,8 @@ export default {
       })
       .then(function(response){ return response.json()})
       .then((function(data) {
-        // console.log(this);
         this.admissions = data;
-        // console.log(this.patients);
+        this.loaded = true;
       }).bind(this))
     },
   },

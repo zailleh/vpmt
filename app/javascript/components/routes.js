@@ -15,7 +15,7 @@ export default {
     '/': Home,
     '/#patients': Patients,
     '/#patients/:id': Patient,
-    '/#admissions': Admissions,
+    '/#admissions/filter/:filter': Admissions,
     '/#admissions/:id': Admission,
     '/#appointments/filter/:filter': Appointments,
     '/#appointments/:id': Appointment,

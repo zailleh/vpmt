@@ -60,31 +60,31 @@ export default {
           name: "Inpatients",
           items: [
             {
-              href: "/#admissions",
+              href: "/#admissions/filter/hospital",
               text: "Hospital"
             },
             {
-              href: "/#admissions",
+              href: "/#admissions/filter/day patient",
               text: "Day Patient"
             },
             {
-              href: "/#admissions",
-              text: "Proceedure"
+              href: "/#admissions/filter/proceedure",
+              text: "Proceedures"
             },
             {
-              href: "/#admissions",
+              href: "/#admissions/filter/stray",
               text: "Strays"
             },
             {
-              href: "/#admissions",
+              href: "/#admissions/filter/stray (injured)",
               text: "Strays (Injured)"
             },
             {
-              href: "/#admissions",
+              href: "/#admissions/filter/wildlife",
               text: "Wildlife"
             },
             {
-              href: "/#admissions",
+              href: "/#admissions/filter/wildlife (injured)",
               text: "Wildlife (Injured)"
             },
           ]
@@ -93,11 +93,11 @@ export default {
           name: "Boarding",
           items: [
             {
-              href: "/#admissions",
+              href: "/#admissions/filter/boarding",
               text: "All"
             },
             {
-              href: "/#admissions",
+              href: "/#admissions/filter/boarding (meds)",
               text: "With Meds"
             }
           ]

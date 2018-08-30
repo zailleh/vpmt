@@ -26,7 +26,7 @@ RSpec.describe Appointment, type: :model do
     it { is_expected.to belong_to :customer }
     it { is_expected.to belong_to :patient }
     it { is_expected.to have_one :admission }
-    it { is_expected.to belong_to :appointment_status }
+    it { is_expected.to belong_to :status }
     it { is_expected.to have_many :interventions }
     it { is_expected.to have_many :notes }
   end
