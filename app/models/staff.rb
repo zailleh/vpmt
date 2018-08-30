@@ -21,4 +21,8 @@ class Staff < ApplicationRecord
   has_many :interventions
   has_many :appointments
   has_many :tprs
+
+  def full_name 
+    self.first_name + ' ' + self.last_name
+  end
 end

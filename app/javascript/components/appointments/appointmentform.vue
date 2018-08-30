@@ -30,11 +30,11 @@
           </div>
         </div>
       </fieldset>
-       <fieldset>
+       <fieldset style="grid-row: 2; grid-column: span 3">
         <label for="reason">Reason:</label>
         <textarea name="reason" type="text" v-model="appointment.reason"/>
       </fieldset>
-      <button class="btn btn-submit">Submit</button>
+      <button style="grid-row: 3; grid-column: 3" class="btn btn-submit">Submit</button>
     </form>
   </div>
 </template>

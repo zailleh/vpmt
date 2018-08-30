@@ -23,7 +23,7 @@
         <label for="animal_type">Species:</label>
         <input name="animal_type" type="text" v-model="patient.animal_type"  required/>
       </fieldset>
-      <fieldset>
+      <fieldset class="span-2">
         <label for="img">Photo:</label>
         <input name="img" type="file" accept="image/*" @change="imgAdded"/>
       </fieldset>

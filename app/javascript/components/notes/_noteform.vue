@@ -8,10 +8,6 @@
     </div>
     <form @submit.prevent="createNote">
       <fieldset>
-        <label>When:</label>
-        <input type="text" disabled v-model="when">
-      </fieldset>
-      <fieldset>
         <label for="staff_name">Staff:</label>
         <div>
           <input autocomplete="off" name="staff_name" type="text" v-model="staff_name" @input="getSuggestions()" />
@@ -26,11 +22,11 @@
           </div>
         </div>
       </fieldset>
-      <fieldset>
+      <fieldset style="grid-column: span 2; grid-row: 2; width: 30em;">
         <label>Details:</label>
         <textarea v-model="note.details" />
       </fieldset>
-      <button class="btn btn-submit">Save</button>
+      <button style="grid-column: 2; grid-row: 3" class="btn btn-submit">Save</button>
     </form>
   </div>
 </template>
