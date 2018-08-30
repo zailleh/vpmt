@@ -18,7 +18,7 @@ export default {
           items: [
             {
               href: "/#customers",
-              text: "All"
+              text: "Find"
             },
             {
               href: "/#customers/new",
@@ -30,19 +30,19 @@ export default {
           name: "Appointments",
           items: [
             {
-              href: "/#appointments/schedule",
+              href: "/#appointments/filter/schedule",
               text: "Schedule"
             },
             {
-              href: "/#appointments/checked-in",
+              href: "/#appointments/filter/checked-in",
               text: "Checked-In"
             },
             {
-              href: "/#appointments/consult",
+              href: "/#appointments/filter/consult",
               text: "In Consult"
             },
             {
-              href: "/#appointments/pay",
+              href: "/#appointments/filter/Ready to Pay",
               text: "Ready-to-Pay"
             }
           ]
@@ -52,12 +52,8 @@ export default {
           items: [
             {
               href: "/#patients",
-              text: "All"
+              text: "Find"
             },
-            {
-              href: "/#patients/new",
-              text: "New"
-            }
           ]
         },
         admissions: {

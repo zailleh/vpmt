@@ -21,7 +21,7 @@ class Appointment < ApplicationRecord
 
   #associations
   has_one :admission, :required => false
-  belongs_to :appointment_status
+  belongs_to :status, :class_name => 'AppointmentStatus'
   belongs_to :staff
   belongs_to :customer
   belongs_to :patient

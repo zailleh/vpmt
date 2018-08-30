@@ -43,7 +43,14 @@
       </fieldset>
       <fieldset>
         <label>Age:</label>
-        <p>{{ admission.patient.date_of_birth }}</p>
+        <p>
+          <span v-if="patientAge.years > 0">
+            {{ patientAge.years }} years
+          </span>
+          <span v-if="patientAge.months > 0">
+            {{ patientAge.months }} months
+          </span>
+        </p>
       </fieldset>
     </div>
     <CardMenu v-if="!show" />
@@ -56,6 +63,17 @@ export default {
   props: {
     admission: Object,
     show: Boolean
+  },
+  computed: {
+    patientAge() {
+      const mspy = 31449600000 //milliseconds per year
+      const msdif = (Date.now() - (new Date(this.admission.patient.date_of_birth))) / mspy
+      const remainder =  msdif % 1
+      return {
+        years: msdif - remainder,
+        months: Number.parseInt(remainder * 12)
+      }
+    }
   },
   components: {
     CardMenu

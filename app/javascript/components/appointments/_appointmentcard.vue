@@ -1,14 +1,14 @@
 <template>
   <div class="appointment summary">
     <p v-if="show" class="card-title">
-      Appointment: {{ friendlyDate.date }} {{ friendlyDate.time }} - {{ appointment.patient.name }}
+      {{title}}
     </p>
     <p v-else class="card-title">
       <a v-bind:href="'#appointments/' + appointment.id">
-        Appointment: {{ friendlyDate.date }} {{ friendlyDate.time }} - {{ appointment.patient.name }}
+       {{title}}
       </a>
     </p>
-    <CardMenu v-if="show" large/>
+    <CardMenu v-if="show" :status="appointment.status" large/>
     <div class="patient-image" style="grid-row: span 2">
       <img v-bind:src="appointment.patient.img_url" />
     </div>
@@ -51,7 +51,7 @@
         </p>
       </fieldset>
     </div>
-    <CardMenu v-if="!show" />
+    <CardMenu v-if="!show" :status="appointment.status" />
   </div>
 </template>
 
@@ -63,6 +63,9 @@ export default {
     show: Boolean
   },
   computed: {
+    title() {
+      return `Appointment: ${ this.friendlyDate.date } ${this. friendlyDate.time } - ${ this.appointment.status.status } - ${ this.appointment.patient.name }`
+    },
     friendlyDate() {
       const date = (new Date(this.appointment.when))
       return {
@@ -74,7 +77,6 @@ export default {
       const mspy = 31449600000 //milliseconds per year
       const msdif = (Date.now() - (new Date(this.appointment.patient.date_of_birth))) / mspy
       const remainder =  msdif % 1
-      console.log('years', msdif)
       return {
         years: msdif - remainder,
         months: Number.parseInt(remainder * 12)

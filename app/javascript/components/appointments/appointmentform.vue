@@ -105,7 +105,6 @@ export default {
       }
     },
     createAppointment() {
-      console.log(this.$data.appointment);
       fetch('/appointments.json', {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         credentials: "same-origin", // include, same-origin, *omit

@@ -150,6 +150,25 @@ as5 = AppointmentStatus.create({
   status: 'Complete'
 })
 
+as1.next_status = as2
+
+as2.previous_status = as1
+as2.next_status = as3
+
+as3.previous_status = as2
+as3.next_status = as4
+
+as4.previous_status = as3
+as4.next_status = as5
+
+as5.previous_status = as4
+
+as1.save!
+as2.save!
+as3.save!
+as4.save!
+as5.save!
+
 # APPOINTMENTS (PATIENT + CUSTOMER + STAFF)
 #  when         :datetime
 #  reason       :text
@@ -163,7 +182,7 @@ ap1 = Appointment.create({
   patient: p1,
   customer: c1,
   staff: st2,
-  appointment_status: as1
+  status: as1
 })
 
 ap2 = Appointment.create({
@@ -172,7 +191,7 @@ reason: 'Unknown lump on rump',
 patient: p5,
 customer: c2,
 staff: st2,
-appointment_status: as1
+status: as1
 })
 
 # ADMISSIONS (REQUIRES PATIENT + STAFF)

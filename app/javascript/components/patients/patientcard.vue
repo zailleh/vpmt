@@ -65,7 +65,6 @@ export default {
       const mspy = 31449600000 //milliseconds per year
       const msdif = (Date.now() - (new Date(this.patient.date_of_birth))) / mspy
       const remainder =  msdif % 1
-      console.log('years', msdif)
       return {
         years: msdif - remainder,
         months: Number.parseInt(remainder * 12)

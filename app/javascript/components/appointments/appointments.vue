@@ -12,14 +12,20 @@
 <script>
 import AppointmentCard from './_appointmentcard.vue'
 export default {
-  data() {
+  props: {
+    filter: String
+  },
+  data: function() {
     return {
-      appointments: this.getAppointments(),
+      appointments: this.getAppointments()
     }
+  },
+  watch: {
+    filter: function(){this.getAppointments()},
   },
   methods: {
     getAppointments() {
-      fetch('/appointments.json', {
+      fetch('/appointments/filter/'+ this.filter +'.json', {
         method: "GET", // *GET, POST, PUT, DELETE, etc.
         credentials: "same-origin", // include, same-origin, *omit
         headers: {
@@ -30,9 +36,7 @@ export default {
       })
       .then(function(response){ return response.json()})
       .then((function(data) {
-        // console.log(this);
         this.appointments = data;
-        // console.log(this.patients);
       }).bind(this))
     },
   },

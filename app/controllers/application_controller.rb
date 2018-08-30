@@ -9,4 +9,12 @@ class ApplicationController < ActionController::Base
         render :json => { errors: model.errors.full_messages }
       end
     end
+
+    def record_update(model, data)
+      if model.update data
+        render :action => :show
+      else
+        render :json => { errors: model.errors.full_messages }
+      end
+    end
 end
