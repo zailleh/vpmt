@@ -70,3 +70,7 @@ gem 'cloudinary'
 # Frontend Stuff
 gem 'webpacker'
 gem 'foreman'
+
+
+# Seeding
+gem 'faker', :require => false;

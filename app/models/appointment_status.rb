@@ -4,6 +4,8 @@
 #
 #  id     :bigint(8)        not null, primary key
 #  status :string
+#  next   :string
+#  prev   :string
 #
 
 class AppointmentStatus < ApplicationRecord

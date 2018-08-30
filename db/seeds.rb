@@ -1,10 +1,20 @@
+require_relative './seed_data/cat_names.rb'
+require_relative './seed_data/dog_names.rb'
+require_relative './seed_data/people_names.rb'
+require_relative './seed_data/street_names.rb'
+require_relative './seed_data/town_names.rb'
+require_relative './seed_data/cat_breeds.rb'
+require_relative './seed_data/dog_breeds.rb'
+
+require 'faker'
+
 # This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+# The data can then be loaded with the rails db:seed command (or create!d alongside the database with db:setup).
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create!(name: 'Luke', movie: movies.first)
 Note.destroy_all
 ScheduledIntervention.destroy_all
 Schedule.destroy_all
@@ -19,134 +29,20 @@ Shift.destroy_all
 Role.destroy_all
 Staff.destroy_all
 
-# STAFF
-st1 = Staff.create({
-  first_name: 'Lisa',
-  last_name: 'Yang',
-  email: 'Lisa.Yang@vpmt.com',
-  password: 'chicken',
-  photo_url: ''
-})
-
-st2 = Staff.create({
-  first_name: 'Tom',
-  last_name: 'Draper',
-  email: 'Tom.Draper@vpmt.com',
-  password: 'chicken',
-  photo_url: ''
-})
-
-# ROLES
-r1 = Role.create({name: 'Reception'})
-r2 = Role.create({name: 'Hospital'})
-r3 = Role.create({name: 'Ward'})
-r4 = Role.create({name: 'Hospital 2'})
-r5 = Role.create({name: 'All-rounder'})
-r6 = Role.create({name: 'Proceedures'})
-
-# SHIFTS (STAFF + ROLES = SHIFTS)
-sh1 = Shift.create({
-  start: DateTime.now,
-  end: DateTime.now + 8.hours,
-  staff: st1,
-  role: r1
-})
-
-sh2 = Shift.create({
-  start: DateTime.now,
-  end: DateTime.now + 8.hours,
-  staff: st2,
-  role: r2
-})
-
-# CUSTOMERS
-c1 = Customer.create({
-  first_name: 'Tim',
-  last_name: 'Caldwell',
-  street: '9 Blah Street',
-  suburb: 'Bighorn',
-  post_code: '1234',
-  phone: '(02) 01201 01201',
-  email: 'tim.caldwell@blah.co',
-  mobile: '04 2524 2524',
-})
-
-c2 = Customer.create({
-  first_name: 'Ryan',
-  last_name: 'Gosling',
-  street: '9 Blah Street',
-  suburb: 'Bighorn',
-  post_code: '1234',
-  phone: '(02) 01201 01201',
-  email: 'ryan.gosling@blah.co',
-  mobile: '04 2524 2524',
-})
-
-# PATIENTS (REQUIRES CUSTOMER)
-#  name          :string
-#  date_of_birth :date
-#  breed         :string
-#  animal_type   :string
-#  customer_id   :bigint(8)
-p1 = Patient.create({
-  name: 'Helo',
-  date_of_birth: Date.today - 7.years,
-  breed: 'Domestic Short Hair',
-  animal_type: 'Cat',
-  customer: c1,
-  img_url: "http://www.placekitten.com/#{rand(200..300)}/#{rand(200..300)}"
-})
-
-p2 = Patient.create({
-  name: 'Athena',
-  date_of_birth: Date.today - 5.years,
-  breed: 'Domestic Short Hair',
-  animal_type: 'Cat',
-  customer: c1,
-  img_url: "http://www.placekitten.com/#{rand(200..300)}/#{rand(200..300)}"
-})
-
-p3 = Patient.create({
-  name: 'Purrcy',
-  date_of_birth: Date.today - 4.months,
-  breed: 'Domestic Short Hair',
-  animal_type: 'Cat',
-  customer: c1,
-  img_url: "http://www.placekitten.com/#{rand(200..300)}/#{rand(200..300)}"
-})
-
-p4 = Patient.create({
-  name: 'Angie',
-  date_of_birth: Date.today - 4.years,
-  breed: 'Greyhound',
-  animal_type: 'Dog',
-  customer: c2,
-  img_url: "http://www.placepuppy.net/#{rand(200..300)}/#{rand(200..300)}"
-})
-
-p5 = Patient.create({
-  name: 'Diesel',
-  date_of_birth: Date.today - 3.years,
-  breed: 'Staffy Cross',
-  animal_type: 'Dog',
-  customer: c2,
-  img_url: "http://www.placepuppy.net/#{rand(200..300)}/#{rand(200..300)}"
-})
-
 # APPOINTMENT STATUS
-as1 = AppointmentStatus.create({
+as1 = AppointmentStatus.create!({
   status: 'Booked'
 })
-as2 = AppointmentStatus.create({
+as2 = AppointmentStatus.create!({
   status: 'Checked-In'
 })
-as3 = AppointmentStatus.create({
+as3 = AppointmentStatus.create!({
   status: 'Consult'
 })
-as4 = AppointmentStatus.create({
+as4 = AppointmentStatus.create!({
   status: 'Ready to Pay'
 })
-as5 = AppointmentStatus.create({
+as5 = AppointmentStatus.create!({
   status: 'Complete'
 })
 
@@ -169,119 +65,213 @@ as3.save!
 as4.save!
 as5.save!
 
-# APPOINTMENTS (PATIENT + CUSTOMER + STAFF)
-#  when         :datetime
-#  reason       :text
-#  staff_id     :bigint(8)
-#  patient_id   :bigint(8)
-#  admission_id :bigint(8)
-#  customer_id  :bigint(8)
-ap1 = Appointment.create({
-  when: Date.today + 13.5.hours,
-  reason: 'Vomiting yellowy stuff frequently and has not been eating',
-  patient: p1,
-  customer: c1,
-  staff: st2,
-  status: as1
-})
+staff = []
+1.upto 50 do
+  # STAFF
+  #  first_name      :string
+  #  last_name       :string
+  #  email           :string
+  #  password_digest :text
+  #  photo_url       :text
 
-ap2 = Appointment.create({
-when: Date.today + 12.5.hours,
-reason: 'Unknown lump on rump',
-patient: p5,
-customer: c2,
-staff: st2,
-status: as1
-})
+  first = FIRST_NAMES.sample
+  last = SURNAMES.sample
 
-# ADMISSIONS (REQUIRES PATIENT + STAFF)
-#  reason         :text
-#  staff_id       :bigint(8)
-#  patient_id     :bigint(8)
-#  appointment_id :bigint(8)
-ad1 = Admission.create({
-  reason: 'Appears to have something stuck in stomach',
-  staff: st2,
-  patient: p1,
-  appointment: ap1
-})
-
-ad2 = Admission.create({
-  reason: 'Totes not cancer',
-  staff: st2,
-  patient: p5,
-  appointment: ap2
-})
-
-# TPRs (STAFF + ADMISSION = TPR)
-#  temperature  :float
-#  resp_rate    :float
-#  pulse        :float
-#  admission_id :bigint(8)
-#  staff_id     :bigint(8)
-Tpr.create({
-  temperature: rand(37.0..40.0),
-  resp_rate: rand(50.0..80.0),
-  pulse:  rand(100.0..140.0),
-  admission: ad1,
-  staff: st1
-})
-
-Tpr.create({
-  temperature: rand(37.0..40.0),
-  resp_rate: rand(50.0..80.0),
-  pulse:  rand(100.0..140.0),
-  admission: ad1,
-  staff: st1
-})
-
-Tpr.create({
-  temperature: rand(37.0..40.0),
-  resp_rate: rand(50.0..80.0),
-  pulse:  rand(100.0..140.0),
-  admission: ad1,
-  staff: st1
-})
-
-Tpr.create({
-  temperature: rand(37.0..40.0),
-  resp_rate: rand(50.0..80.0),
-  pulse:  rand(100.0..140.0),
-  admission: ad2,
-  staff: st1
-})
-
-Tpr.create({
-  temperature: rand(37.0..40.0),
-  resp_rate: rand(50.0..80.0),
-  pulse:  rand(100.0..140.0),
-  admission: ad2,
-  staff: st1
-})
+  staff.push(
+    Staff.create!({
+      :first_name => first,
+      :last_name => last,
+      :email => first + '.' + last + '@vetpractice.com',
+      :password => 'chicken'
+    })
+  )
+  
+ 
+end
 
 
+# ROLES
+roles = []
+roles << Role.create!({name: 'Reception'})
+roles << Role.create!({name: 'Hospital'})
+roles << Role.create!({name: 'Ward'})
+roles << Role.create!({name: 'Hospital 2'})
+roles << Role.create!({name: 'All-rounder'})
+roles << Role.create!({name: 'Proceedures'})
 
-# INTERVENTIONS (REQUIRES APPOINTMENT OR ADMISSION)
-#  description    :text
-#  admission_id   :bigint(8)
-#  appointment_id :bigint(8)
-#  staff_id       :bigint(8)
-i1 = Intervention.create({
-  description: 'Provide with vomit inducing medicine',
-  admission: ad1,
-  appointment: nil,
-  staff: st1
-})
+# SHIFTS (STAFF + ROLES = SHIFTS)
+#  start      :datetime
+#  end        :datetime
+#  role_id    :bigint(8)
+#  staff_id   :bigint(8)
+1.upto 50 do
+  staff.each do |st|
+    shift_start = Date.today + rand(4..19).hours + rand(-7..7).days
+    shift_end = shift_start + rand(4..12).hours
+    Shift.create!({
+      :start => shift_start,
+      :end => shift_end,
+      :role => roles.sample,
+      :staff => st
+    })
+  end
+end
+
+# CUSTOMERS
+#  first_name :string
+#  last_name  :string
+#  street     :string
+#  suburb     :string
+#  post_code  :string
+#  phone      :string
+#  mobile     :string
+#  email      :string
+customers = []
+1.upto 300 do
+  firstname =  FIRST_NAMES.sample
+  surname = SURNAMES.sample
+  cust = Customer.create!({
+    :first_name => firstname,
+    :last_name => surname,
+    :street => rand(1..100).to_s + ' ' + STREET_NAMES.sample,
+    :suburb => TOWN_NAMES.sample,
+    :post_code => rand(2000...7000).to_s,
+    :phone => '0' + rand(2..7).to_s + rand(1000..9999).to_s + rand(1000..9999).to_s,
+    :mobile => '04' + rand(1000..9999).to_s + rand(1000..9999).to_s,
+    :email => firstname + '.' + surname + rand(99..1000).to_s + '@somemail.com',
+  })
+
+  # if customer didn't save, next loop
+  next unless cust.valid?
+
+  # PATIENTS (REQUIRES CUSTOMER)
+  #  name          :string
+  #  date_of_birth :date
+  #  breed         :string
+  #  animal_type   :string
+  #  customer_id   :bigint(8)
+  #  img_url       :text
+  1.upto rand(1..3) do
+    if rand > 0.5 
+      # make dog
+      patient = Patient.create!({
+        :name => DOG_NAMES.sample,
+        :date_of_birth => Date.today - rand(0..15).years - rand(0..11).months,
+        :breed => DOG_BREEDS.sample,
+        :animal_type => "Dog",
+        :customer => cust,
+        :img_url => "http://www.placepuppy.net/#{rand(150..250)}/#{rand(150..250)}"
+      })
+    else
+      # make cat
+      patient = Patient.create!({
+        :name => CAT_NAMES.sample,
+        :date_of_birth => Date.today - rand(0..15).years - rand(0..11).months,
+        :breed => CAT_BREEDS.sample,
+        :animal_type => "Cat",
+        :customer => cust,
+        :img_url => "https://placekitten.com/#{rand(150..250)}/#{rand(150..250)}"
+      })
+    end
+    
+    next unless patient.valid?
+
+    # APPOINTMENTS (PATIENT + CUSTOMER + STAFF)
+    #  when         :datetime
+    #  reason       :text
+    #  staff_id     :bigint(8)
+    #  patient_id   :bigint(8)
+    #  admission_id :bigint(8)
+    #  customer_id  :bigint(8)
+    1.upto rand(1..5) do
+      apdate = Date.today + rand(-7..7).days + rand(9..19).hours
+      ap = Appointment.create!({
+        :when => apdate,
+        :reason => Faker::Lorem.sentence,
+        :staff => staff.sample,
+        :patient => patient,
+        :customer => cust,
+        :status => (apdate < DateTime.now - 1.hour ? as5 : apdate < DateTime.now ? as3 : as1)
+      })
+
+      1.upto rand(0..1) do
+        # ADMISSIONS (REQUIRES PATIENT + STAFF)
+        #  reason         :text
+        #  staff_id       :bigint(8)
+        #  patient_id     :bigint(8)
+        #  appointment_id :bigint(8)
+        admission = Admission.create!({
+          :reason => Faker::Lorem.sentence,
+          :staff => staff.sample,
+          :patient => patient,
+          :appointment => ap
+        })
+
+        1.upto rand(2..5) do
+          # TPRs (STAFF + ADMISSION = TPR)
+          #  temperature  :float
+          #  resp_rate    :float
+          #  pulse        :float
+          #  admission_id :bigint(8)
+          #  staff_id     :bigint(8)
+          Tpr.create!({
+            :admission => admission,
+            :staff => staff.sample,
+            :temperature => rand(36.0..41.0),
+            :resp_rate => rand(60..180),
+            :pulse => rand(90..140),
+          })
+        end
+      end
+    end
+
+
+    1.upto rand(0..1) do
+      # ADMISSIONS (REQUIRES PATIENT + STAFF)
+      #  reason         :text
+      #  staff_id       :bigint(8)
+      #  patient_id     :bigint(8)
+      #  appointment_id :bigint(8)  
+      admission = Admission.create!({
+        :reason => Faker::Lorem.sentence,
+        :staff => staff.sample,
+        :patient => patient,
+      })
+
+        1.upto rand(2..5) do
+          # TPRs (STAFF + ADMISSION = TPR)
+          #  temperature  :float
+          #  resp_rate    :float
+          #  pulse        :float
+          #  admission_id :bigint(8)
+          #  staff_id     :bigint(8)
+          Tpr.create!({
+            :admission => admission,
+            :staff => staff.sample,
+            :temperature => rand(36.0..41.0),
+            :resp_rate => rand(60..180),
+            :pulse => rand(90..140),
+          })
+        end
+
+        1.upto rand(2..5) do
+          # INTERVENTIONS (REQUIRES APPOINTMENT OR ADMISSION)
+          #  description    :text
+          #  admission_id   :bigint(8)
+          #  appointment_id :bigint(8)
+          #  staff_id       :bigint(8)
+
+        end
+    end
+  end
+end
+
 
 # SCHEDULE (REQUIRES ADMISSION)
 #  start        :datetime
 #  staff_id     :bigint(8)
 #  admission_id :bigint(8)
-s1 = Schedule.create({
-  start: DateTime.now,
-  staff: st1,
-  admission: ad1
-})
+
 
 # SCHEDULED INTERVENTION (REQUIRES ADMISSION)
 #  description    :text
@@ -290,45 +280,21 @@ s1 = Schedule.create({
 #  staff_id       :bigint(8)
 #  schedule_id    :bigint(8)
 #  status         :string
-si1 = ScheduledIntervention.create({
-  description: 'give iv fluids',
-  admission: ad1,
-  schedule: s1,
-  status: 'Pending'
-})
+
 
 # NOTES
 #  details    :text
 #  staff_id   :bigint(8)
-# Create on patient
-p1.notes.create({
-  staff: st1,
-  details: 'Scared easily, provide quiet cage if possible and give ketamine to calm'
-})
-
-# create on schedule
-s1.notes.create({
-  staff: st1,
-  details: "This schedule sucks"
-})
-
-# create note on customer
-c1.notes.create({
-  staff: st1,
-  details: "This customer is cranky all the time, it's not your fault. Dont consider for blood doner program"
-})
-
-# create note on appointment
-ap1.notes.create({
-  staff: st1,
-  details: "Saw Helo and he was lethargic and seemed to be in pain. Recommending admission for monitoring, fluids, and administering vom-inducing-stuff"
-})
-
-# create note on admission
-ad1.notes.create({
-  staff: st1,
-  details: "Admitting to hospital for monitoring since not eating and generally not well."
-})
+# create! on patient
 
 
+# create! on schedule
 
+
+# create! note on customer
+
+
+# create! note on appointment
+
+
+# create! note on admission

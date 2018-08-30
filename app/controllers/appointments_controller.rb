@@ -6,7 +6,7 @@ class AppointmentsController < ApplicationController
   def filter
     filter = params[:filter]
     if filter.downcase == 'schedule'
-      @appointments = Appointment.all
+      @appointments = Appointment.where(:when => Date.today.beginning_of_day..Date.today.end_of_day);
     else
       @appointments = Appointment.joins(:status).where( 'lower("appointment_statuses"."status") = ?', filter.downcase)
     end
