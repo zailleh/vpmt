@@ -5,9 +5,10 @@
         Add Pet
       </li><li @click="popup(noteForm, noteProps)">
         Add Note
-      </li><li>
-        Update Record
       </li>
+      <!-- <li>
+        Update Record
+      </li> -->
     </ul>
   </div>
 </template>

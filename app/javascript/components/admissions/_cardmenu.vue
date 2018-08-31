@@ -3,9 +3,11 @@
     <ul>
       <li v-if="status.next_status" @click="nextStatus">
         {{ status.next_status }}
-      </li><li v-if="status.next_status">
+      </li>
+      <!-- <li v-if="status.next_status">
         Discharge Patient
-      </li><li @click="popup(noteForm, noteProps)">
+      </li> -->
+      <li @click="popup(noteForm, noteProps)">
         Add Note
       </li><li @click="popup(tprForm, tprProps)">
         Add TPR

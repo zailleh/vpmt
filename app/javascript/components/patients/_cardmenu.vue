@@ -5,9 +5,11 @@
         Make Appointment
       </li><li @click="popup(noteForm, noteProps)">
         Add Note
-      </li><li>
+      </li>
+      <!-- <li>
         Update Record
-      </li><li @click="goToCustomer">
+      </li> -->
+      <li @click="goToCustomer">
         Customer Record
       </li>  
     </ul>

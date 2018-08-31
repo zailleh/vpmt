@@ -68,8 +68,8 @@ export default {
               text: "Day Patient"
             },
             {
-              href: "/#admissions/filter/proceedure",
-              text: "Proceedures"
+              href: "/#admissions/filter/procedure",
+              text: "Procedures"
             },
             {
               href: "/#admissions/filter/stray",
