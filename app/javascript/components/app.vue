@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <Header />
+    <Header :name="user_name" :logged-in="loggedIn" />
     <div class="container">
-      <Navbar />
+      <Navbar/>
       <main>
-        <Router v-bind:routes="routes" />
+        <Router :name="user_name" v-if="loggedIn()" v-bind:routes="routes" />
       </main>
     </div>
     <div v-if="showPopup" class="popup">
@@ -28,6 +28,9 @@
         routes,
         popupContent: null,
         popupParams: null,
+        update: 0,
+        user_id: localStorage.getItem('user_id'),
+        user_name: localStorage.getItem('user_name')
       }
     },
     methods: {
@@ -37,12 +40,21 @@
       },
       closePopup() {
         this.popupContent = null;
-      }
+      },
+      loggedIn: function() {
+        const user_id = localStorage.getItem('user_id');
+        return (typeof user_id !== "undefined" && user_id !== null)
+      },
     },
     computed: {
       showPopup() {
         return this.popupContent != null;
-      },
+      }
+    },
+    watch: {
+      user_id: function() {
+        this.loggedIn === true;
+      }
     },
     components: {
       Navbar,

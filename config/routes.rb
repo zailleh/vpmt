@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :notes, :only => [:create]
     resources :tprs, :only => [:create]
 
+    put '/staff/login' => "staffs#login"
     get '/appointments/filter/:filter' => "appointments#filter"
     get '/admissions/filter/:filter' => "admissions#filter"
     
