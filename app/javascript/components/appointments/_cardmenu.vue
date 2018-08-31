@@ -31,7 +31,7 @@ export default {
       noteForm: NoteForm,
       noteProps: {
         parent_id: this.$parent.appointment.id,
-        takes_notes_type: 'Admission'
+        takes_notes_type: 'Appointment'
       }
     }
   },
