@@ -3,6 +3,14 @@
 ## Demo
 A live demo can be found here: https://stormy-temple-84763.herokuapp.com/
 
+Log in using guess details:
+|          |          |
+|----------|----------|
+| Email: | guest@vpmt.com |
+| Password: | chicken |
+
+-----
+
 ## About
 VPMT has been designed to be as easy to use as possible with a core mission to ensure any service management task can be performed quickly and easily.
 

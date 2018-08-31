@@ -363,3 +363,12 @@ end
 
 
 # create! note on admission
+
+
+## Create Guest Account
+Staff.create({
+  :first_name => "Guest",
+  :last_name => "User",
+  :email => "guest@vpmt.com",
+  :password => "chicken"
+})
