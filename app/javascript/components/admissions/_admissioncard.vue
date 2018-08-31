@@ -1,12 +1,12 @@
 <template>
   <div class="appointment summary">
-    <p v-if="show" class="card-title">Inpatient: {{ admission.patient.name }}</p>
+    <p v-if="show" class="card-title">{{ cardTitle }}</p>
     <p v-else class="card-title">
       <a v-bind:href="'#admissions/' + admission.id">
-        Inpatient: {{ admission.patient.name }}
+        {{ cardTitle }}
       </a>
     </p>
-    <CardMenu v-if="show" large/>
+    <CardMenu v-if="show" :status="admission.status" large/>
     <div class="patient-image" style="grid-row: span 2">
       <img v-bind:src="admission.patient.img_url" />
     </div>
@@ -53,7 +53,7 @@
         </p>
       </fieldset>
     </div>
-    <CardMenu v-if="!show" />
+    <CardMenu :status="admission.status" v-if="!show" />
   </div>
 </template>
 
@@ -65,6 +65,9 @@ export default {
     show: Boolean
   },
   computed: {
+    cardTitle() {
+      return `${ this.admission.type }: ${ this.admission.patient.name } - ${ this.admission.status.status }`
+    },
     patientAge() {
       const mspy = 31449600000 //milliseconds per year
       const msdif = (Date.now() - (new Date(this.admission.patient.date_of_birth))) / mspy

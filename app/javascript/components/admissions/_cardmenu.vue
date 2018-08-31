@@ -1,7 +1,9 @@
 <template>
   <div :class="menuSize">
     <ul>
-      <li>
+      <li v-if="status.next_status" @click="nextStatus">
+        {{ status.next_status }}
+      </li><li v-if="status.next_status">
         Discharge Patient
       </li><li @click="popup(noteForm, noteProps)">
         Add Note
@@ -38,7 +40,33 @@ export default {
   },
   mixins: [makePopup],
   props: {
-    large: Boolean
+    large: Boolean,
+    status: Object,
+  },
+  methods: {
+    nextStatus() {
+      fetch('/admissions/'+ this.tprProps.admission_id +'.json', {
+        method: "PUT", // *GET, POST, PUT, DELETE, etc.
+        credentials: "same-origin", // include, same-origin, *omit
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+        },
+        redirect: "follow", // manual, *follow, error
+        referrer: "no-referrer", // no-referrer, *client
+        body: JSON.stringify({ admission: { status_id: this.status.next } })
+      })
+      .then(function(response){ return response.json()})
+      .then((function(data) {
+        // console.log(data);
+        if (data.errors && data.errors.length > 0) {
+          this.errors = data.errors
+        } else {
+          // console.log(this.$parent);
+          // console.log(data);
+          this.$parent.admission = data;
+        }
+      }).bind(this))
+    }
   }
 }
 </script>

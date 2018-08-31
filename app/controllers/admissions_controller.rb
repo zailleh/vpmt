@@ -37,4 +37,15 @@ class AdmissionsController < ApplicationController
   def show
     @admission = Admission.find params[:id]
   end
+
+  def update
+    @admission = Admission.find params[:id]
+
+    record_update @admission, admission_params
+  end
+
+  private
+    def admission_params
+      params.require(:admission).permit(:reason, :staff_id, :patient_id, :appointment_id, :admit_type_id, :admit_at, :discharge_at, :status_id)
+    end
 end

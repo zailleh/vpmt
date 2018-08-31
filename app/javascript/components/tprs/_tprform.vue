@@ -42,7 +42,7 @@
         <label for="pulse">HR:</label>
         <input name="pulse" type="number" step="0.01" v-model="tpr.pulse"/>
       </fieldset>
-      <button>Save</button>
+      <button class="btn btn-submit">Save</button>
     </form>
   </div>
 </template>
@@ -73,7 +73,6 @@ export default {
   },
   watch: {
     created_at_date: function() {
-      console.log('date changed');
       this.when();
     },
     created_at_time: function() {

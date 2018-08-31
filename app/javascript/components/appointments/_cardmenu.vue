@@ -7,9 +7,11 @@
         Admit Patient
       </li><li @click="popup(noteForm, noteProps)">
         Add Note
-      </li><li>
+      </li>
+      <!-- <li>
         Take Payment
-      </li><li @click="goToCustomer">
+      </li> -->
+      <li @click="goToCustomer">
         Customer Record
       </li>  
     </ul>
@@ -54,12 +56,9 @@ export default {
       })
       .then(function(response){ return response.json()})
       .then((function(data) {
-        console.log(data);
         if (data.errors && data.errors.length > 0) {
           this.errors = data.errors
         } else {
-          console.log(this.$parent);
-          console.log(data);
           this.$parent.appointment = data;
         }
       }).bind(this))
