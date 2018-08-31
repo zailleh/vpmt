@@ -97,7 +97,7 @@ export default {
               text: "All"
             },
             {
-              href: "/#admissions/filter/boarding (meds)",
+              href: "/#admissions/filter/boarding meds",
               text: "With Meds"
             }
           ]
