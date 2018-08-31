@@ -1,12 +1,10 @@
 @import "_main.scss";
 
 .autocomplete-list {
-  /*the container must be positioned relative:*/
-  position: relative;
+  position: absolute;
 }
 
 .autocomplete-items {
-  position: absolute;
   border: 1px solid #d4d4d4;
   border-bottom: none;
   border-top: none;

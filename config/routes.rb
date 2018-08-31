@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :customers, :only => [:index, :show, :create, :update]
     resources :admissions, :only => [:index, :show, :create, :update]
     resources :notes, :only => [:create]
+    resources :tprs, :only => [:create]
 
     get '/appointments/filter/:filter' => "appointments#filter"
     get '/admissions/filter/:filter' => "admissions#filter"

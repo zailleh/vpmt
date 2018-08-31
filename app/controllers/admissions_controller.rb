@@ -5,7 +5,7 @@ class AdmissionsController < ApplicationController
 
   def filter
     #  admit_at       :datetime
-#  discharge_at   :datetime
+    #  discharge_at   :datetime
     filter = params[:filter]
     admit_at_field = Admission.arel_table[:admit_at]
     discharge_at_field = Admission.arel_table[:discharge_at]
