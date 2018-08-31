@@ -4,10 +4,12 @@
 A live demo can be found here: https://stormy-temple-84763.herokuapp.com/
 
 Log in using guess details:
-|          |          |
+
+|      |      |
 |----------|----------|
 | Email: | guest@vpmt.com |
 | Password: | chicken |
+|           |         |
 
 -----
 
