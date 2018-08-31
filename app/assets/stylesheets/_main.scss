@@ -52,8 +52,8 @@ header {
   justify-content: space-between;
   height: 2em;
   width: 100vw;
-  border-bottom: 0.25em solid $color-menu-active;
-  background-color: $color-menu-bg;
+  border-bottom: 0.25em solid $color-highlight;
+  background-color: $color-highlight-2;
   .logo {
     line-height: 2em;
     color: white;
@@ -91,7 +91,7 @@ main {
   }
 
   > li:hover {
-    background-color: $color-menu-sub;
+    background-color: $color-highlight;
   }
 }
 

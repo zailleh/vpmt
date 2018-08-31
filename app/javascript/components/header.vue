@@ -5,8 +5,7 @@
     </div>
     <div>
       <ul class="staff-menu">
-        <li>Log In</li>
-        <li>Somestuff</li>
+        <li>Welcome Guest</li>
       </ul>
     </div>
   </header>
